@@ -1,8 +1,13 @@
 export interface UiState {
   modal: {
-    textmodal: string;
+    text: string;
     showModal: boolean;
-    error: boolean;
+    isError: boolean;
   };
   isLoading: boolean;
+}
+
+export interface ShowModalActionPayload {
+  isError: boolean;
+  text: string;
 }
