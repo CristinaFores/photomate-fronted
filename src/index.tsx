@@ -5,6 +5,7 @@ import App from "./components/App/App";
 import { store } from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyle from "./style/GlobalStyle";
+import "@fontsource/roboto";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
