@@ -1,7 +1,7 @@
 import React from "react";
 import { InputStyled } from "./InputStyled";
 
-interface inputProps {
+interface InputProps {
   type: React.HTMLInputTypeAttribute;
   placeholder: string;
   htmlFor: string;
@@ -21,7 +21,7 @@ const Input = ({
   autoComplete,
   id,
   textLabel,
-}: inputProps) => {
+}: InputProps) => {
   return (
     <label htmlFor={htmlFor}>
       {textLabel}
