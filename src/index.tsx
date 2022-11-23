@@ -6,6 +6,8 @@ import { store } from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyle from "./style/GlobalStyle";
 import "@fontsource/roboto";
+import { ThemeProvider } from "styled-components";
+import mainStyleColors from "./style/themeColors";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -13,8 +15,10 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <GlobalStyle />
-      <App />
+      <ThemeProvider theme={mainStyleColors}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 );
