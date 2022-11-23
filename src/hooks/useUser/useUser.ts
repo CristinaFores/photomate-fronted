@@ -1,9 +1,6 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import {
-  hiddenModalActionCreator,
-  showModalActionCreator,
-} from "../../redux/features/uiSlice/uiSlice";
+import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
 import { RegisterData } from "./types";
 
 const useUser = () => {
@@ -12,17 +9,17 @@ const useUser = () => {
 
   const registerUser = async (userRegister: RegisterData) => {
     try {
-      axios.post(`${urlApi}/users/register`, userRegister);
+      await axios.post(`${urlApi}/users/register`, userRegister);
 
       dispatch(
         showModalActionCreator({
-          isError: true,
+          isError: false,
           text: "Te has registrado correctamente, Por favor inicia sesión",
         })
       );
     } catch (error: unknown) {
       dispatch(
-        hiddenModalActionCreator({
+        showModalActionCreator({
           isError: true,
           text: "El usuario ya existe",
         })
