@@ -33,6 +33,17 @@ const uiSlice = createSlice({
         showModal: true,
       },
     }),
+    hiddenModal: (
+      currentUiState,
+      action: PayloadAction<ShowModalActionPayload>
+    ) => ({
+      ...currentUiState,
+      modal: {
+        text: "",
+        isError: false,
+        showModal: false,
+      },
+    }),
   },
 });
 
@@ -40,6 +51,7 @@ export const {
   setLoadinTrue: setLoadingTrueActionCreator,
   setLoadingFalse: setLoadingFalseActionCreator,
   showModalError: showModalActionCreator,
+  hiddenModal: hiddenModalActionCreator,
 } = uiSlice.actions;
 
 export const uiReducer = uiSlice.reducer;
