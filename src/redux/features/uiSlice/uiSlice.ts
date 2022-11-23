@@ -25,7 +25,7 @@ const uiSlice = createSlice({
   },
 });
 export const {
-  setLoadinTrue: setLoadinTrueActionCreator,
+  setLoadinTrue: setLoadingTrueActionCreator,
   setLoadingFalse: setLoadingFalseActionCreator,
 } = uiSlice.actions;
 
