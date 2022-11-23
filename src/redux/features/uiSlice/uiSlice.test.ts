@@ -1,5 +1,6 @@
 import { UiState } from "./types";
 import {
+  hiddenModalActionCreator,
   setLoadingFalseActionCreator,
   setLoadingTrueActionCreator,
   showModalActionCreator,
@@ -63,6 +64,32 @@ describe("Given a uiReducer showModalError", () => {
       const newUiState = uiReducer(
         mockUiState,
         showModalActionCreator(expextActionPayload)
+      );
+
+      expect(newUiState.modal).toStrictEqual(expectedUiState.modal);
+    });
+  });
+});
+
+describe("Given a uiReducer hiddenModal", () => {
+  describe("When it is invoked it receives the  the initial ui state mockUiState", () => {
+    test("Then it shouldreturn a copy of the initial state with showModalError with showModal: true", () => {
+      const expectedUiState = {
+        modal: {
+          isError: false,
+          text: "",
+          showModal: false,
+        },
+        isLoading: false,
+      };
+      const expextActionPayload = {
+        isError: false,
+        text: "",
+      };
+
+      const newUiState = uiReducer(
+        mockUiState,
+        hiddenModalActionCreator(expextActionPayload)
       );
 
       expect(newUiState.modal).toStrictEqual(expectedUiState.modal);
