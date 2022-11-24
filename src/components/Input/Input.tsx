@@ -23,8 +23,8 @@ const Input = ({
   textLabel,
 }: InputProps) => {
   return (
-    <label htmlFor={htmlFor}>
-      {textLabel}
+    <>
+      <label htmlFor={htmlFor}>{textLabel}</label>
       <InputStyled
         type={type}
         placeholder={placeholder}
@@ -33,7 +33,7 @@ const Input = ({
         autoComplete={autoComplete}
         id={id}
       />
-    </label>
+    </>
   );
 };
 
