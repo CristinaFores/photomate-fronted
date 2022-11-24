@@ -6,6 +6,7 @@ import { store } from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyle from "./style/GlobalStyle";
 import "@fontsource/roboto";
+import "@fontsource/dancing-script";
 import { ThemeProvider } from "styled-components";
 import mainStyleColors from "./style/themeColors";
 
