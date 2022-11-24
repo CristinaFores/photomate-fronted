@@ -37,7 +37,9 @@ const Register = (): JSX.Element => {
     };
     await registerUser(formDataToSubmit);
   };
-
+  const isFormEmpty = () => {
+    return Object.values(formData).some((data) => data === "");
+  };
   return (
     <>
       <RegisterStyled onSubmit={sendUsers}>
@@ -72,7 +74,7 @@ const Register = (): JSX.Element => {
         <Button
           text={"Registrase"}
           ariaLabel={"Registrase"}
-          disabled={onchange === undefined ? true : false}
+          disabled={isFormEmpty()}
         ></Button>
 
         <TextSpanStyled>
