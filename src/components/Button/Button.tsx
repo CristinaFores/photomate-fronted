@@ -5,13 +5,14 @@ interface ButtonProps {
   action?: () => void;
   disabled?: boolean;
   ariaLabel: string;
+  onSubmit?: React.FormEventHandler<HTMLButtonElement>;
 }
 
 const Button = ({
   text,
   action,
   ariaLabel,
-
+  onSubmit,
   disabled,
 }: ButtonProps): JSX.Element => {
   return (
@@ -20,6 +21,7 @@ const Button = ({
       onClick={action}
       aria-label={ariaLabel}
       disabled={disabled}
+      onSubmit={onSubmit}
     >
       {text}
     </ButtonStyled>
