@@ -7,7 +7,7 @@ import { RootState, store } from "../redux/store";
 import mainStyleColors from "../style/themeColors";
 import GlobalStyle from "../style/GlobalStyle";
 import { Provider } from "react-redux";
-import React from "react";
+
 import { ThemeProvider } from "styled-components";
 
 const initialUiState: UiState = {
