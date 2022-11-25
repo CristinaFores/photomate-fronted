@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import renderWithProviders from "../../mocks/storeMock";
 import { hiddenModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
+import { store } from "../../redux/store";
 
 import Modal from "./Modal";
 
@@ -36,7 +37,9 @@ describe("Given a Modal component", () => {
   describe("When it render with a text: Error!, img with text:imagen error ,and click in the button action", () => {
     test("Then it should  call dispatch with action hiddenModalActionCreator", async () => {
       const expectedModalTitle = "Error!";
-      renderWithProviders(<Modal text={expectedModalTitle} isError={true} />);
+      renderWithProviders(<Modal text={expectedModalTitle} isError={true} />, {
+        store,
+      });
 
       const button = screen.getByRole("button", {
         name: "Cerrar Ventana Modal",
