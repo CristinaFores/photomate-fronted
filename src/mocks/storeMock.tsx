@@ -4,12 +4,11 @@ import { PropsWithChildren } from "react";
 import { UiState } from "../redux/features/uiSlice/types";
 import { uiReducer } from "../redux/features/uiSlice/uiSlice";
 import { RootState, store } from "../redux/store";
-
-import { DefaultTheme, ThemeProvider } from "styled-components";
 import mainStyleColors from "../style/themeColors";
 import GlobalStyle from "../style/GlobalStyle";
 import { Provider } from "react-redux";
 import React from "react";
+import { ThemeProvider } from "styled-components";
 
 const initialUiState: UiState = {
   modal: {
