@@ -82,15 +82,8 @@ describe("Given a uiReducer hiddenModal", () => {
         },
         isLoading: false,
       };
-      const expextActionPayload = {
-        isError: false,
-        text: "",
-      };
 
-      const newUiState = uiReducer(
-        mockUiState,
-        hiddenModalActionCreator(expextActionPayload)
-      );
+      const newUiState = uiReducer(mockUiState, hiddenModalActionCreator());
 
       expect(newUiState.modal).toStrictEqual(expectedUiState.modal);
     });
