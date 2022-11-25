@@ -33,15 +33,12 @@ const uiSlice = createSlice({
         showModal: true,
       },
     }),
-    hiddenModal: (
-      currentUiState,
-      action: PayloadAction<ShowModalActionPayload>
-    ) => ({
+    hiddenModal: (currentUiState) => ({
       ...currentUiState,
       modal: {
         text: "",
-        isError: false,
         showModal: false,
+        isError: false,
       },
     }),
   },
