@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { RegisterData } from "../../hooks/useUser/types";
+import { UserCredentials } from "../../hooks/useUser/types";
 import useUser from "../../hooks/useUser/useUser";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-import { FormStyled, TextSpanStyled } from "./RegisterStyled";
+import { FormStyled, TextSpanStyled } from "../Register/RegisterStyled";
 
-const Register = (): JSX.Element => {
-  const { registerUser } = useUser();
+const Login = (): JSX.Element => {
+  const { loginUser } = useUser();
 
-  const intialFormData: RegisterData = {
+  const intialFormData: UserCredentials = {
     username: "",
     password: "",
-    email: "",
   };
 
   const [formData, setFormData] = useState(intialFormData);
@@ -30,12 +29,11 @@ const Register = (): JSX.Element => {
   const sendUsers = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const formDataToSubmit: RegisterData = {
+    const formDataToSubmit: UserCredentials = {
       username: formData.username,
       password: formData.password,
-      email: formData.email,
     };
-    await registerUser(formDataToSubmit);
+    await loginUser(formDataToSubmit);
   };
   const isFormEmpty = () => {
     return Object.values(formData).some((data) => data === "");
@@ -43,7 +41,6 @@ const Register = (): JSX.Element => {
   return (
     <>
       <FormStyled onSubmit={sendUsers}>
-        <p>Rellena los campos y empieza a compartir tus fotos con tus amigos</p>
         <Input
           type="text"
           placeholder="Nombre"
@@ -51,15 +48,6 @@ const Register = (): JSX.Element => {
           textLabel="Nombre*"
           onChange={handleInputChange}
           id="username"
-        />
-
-        <Input
-          type="email"
-          placeholder="Email"
-          htmlFor="email"
-          textLabel="Email*"
-          onChange={handleInputChange}
-          id="email"
         />
 
         <Input
@@ -72,18 +60,18 @@ const Register = (): JSX.Element => {
         />
 
         <Button
-          text="Registrase"
-          ariaLabel="Registrase"
+          text="Entrar"
+          ariaLabel="Entrar"
           disabled={isFormEmpty()}
         ></Button>
 
         <TextSpanStyled>
           <span>¿Ya tienes una cuenta? </span>
-          <a href="/"> Entrar</a>
+          <a href="/"> Registrarse</a>
         </TextSpanStyled>
       </FormStyled>
     </>
   );
 };
 
-export default Register;
+export default Login;

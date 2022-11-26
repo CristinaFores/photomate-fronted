@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const RegisterStyled = styled.form`
+export const FormStyled = styled.form`
   padding-left: 2.62rem;
   padding-right: 2.62rem;
   margin: 5px;
@@ -16,8 +16,7 @@ export const RegisterStyled = styled.form`
   gap: 1rem;
   flex-direction: column;
   flex-wrap: wrap;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
-    inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 20%);
   border-radius: 15px;
 
   p {
