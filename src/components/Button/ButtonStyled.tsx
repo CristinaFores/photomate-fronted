@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import mainStyleColors from "../../style/themeColors";
 
 const ButtonStyled = styled.button`
   font-family: inherit;
@@ -7,18 +6,18 @@ const ButtonStyled = styled.button`
   border: none;
   width: 100%;
   font-size: 20px;
-  color: ${mainStyleColors.secondaryColor};
+  color: ${(props) => props.theme.colors.primary.light};
   border-radius: 6px;
-  background-color: ${mainStyleColors.activeColor};
+  background-color: ${(props) => props.theme.colors.button.active};
 
   &:focus,
   :hover {
     cursor: pointer;
-    background-color: ${mainStyleColors.primaryColor};
+    background-color: ${(props) => props.theme.colors.primary.dark};
   }
 
   &:disabled {
-    background-color: ${mainStyleColors.disabledColors};
+    background-color: ${(props) => props.theme.colors.button.disable};
   }
 `;
 

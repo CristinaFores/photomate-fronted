@@ -25,11 +25,11 @@ export const ModalStyled = styled.div`
     font-size: 1rem;
     color: #aea9a9;
     font-size: 1rem;
-    color: ${mainStyleColors.lightPrimaryColor};
+    color: ${(props) => props.theme.colors.primary.base};
     &:focus,
     &:hover {
       cursor: pointer;
-      color: ${mainStyleColors.primaryColor};
+      color: ${(props) => props.theme.colors.primary.base};
     }
   }
 
