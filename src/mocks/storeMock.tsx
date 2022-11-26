@@ -9,6 +9,7 @@ import GlobalStyle from "../style/GlobalStyle";
 import { Provider } from "react-redux";
 
 import { ThemeProvider } from "styled-components";
+import { userReducer } from "../redux/features/userSlice/userSlice";
 
 const initialUiState: UiState = {
   modal: {
@@ -22,6 +23,7 @@ const initialUiState: UiState = {
 export const mockInitialStore: typeof store = configureStore({
   reducer: {
     ui: uiReducer,
+    user: userReducer,
   },
 
   preloadedState: {
@@ -39,7 +41,7 @@ const renderWithProviders = (
   {
     preloadedState,
     store = configureStore({
-      reducer: { ui: uiReducer },
+      reducer: { ui: uiReducer, user: userReducer },
       preloadedState,
     }),
     ...renderOptions
