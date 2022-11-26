@@ -13,6 +13,11 @@ const mainStyleColors: DefaultTheme = {
       disable: "rgba(24, 119, 242, 0.36)",
     },
   },
+  padding: {
+    big: "20px",
+    medium: "15px",
+    small: "10px",
+  },
 };
 
 export default mainStyleColors;
