@@ -4,7 +4,7 @@ import mainStyleColors from "../../style/themeColors";
 export const RegisterStyled = styled.form`
   padding-left: 2.62rem;
   padding-right: 2.62rem;
-
+  margin: 5px;
   @media (min-width: 700px) {
     padding-left: 6.25rem;
     padding-right: 6.25rem;
