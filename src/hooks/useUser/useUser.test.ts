@@ -3,7 +3,7 @@ import ProviderWrapper from "../../mocks/ProwiderWrapper";
 import { mockInitialStore } from "../../mocks/storeMock";
 import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
 import { JwtPayloadCustom } from "../../utils/types";
-import { RegisterData } from "./types";
+import { RegisterData, UserCredentials } from "./types";
 import useUser from "./useUser";
 
 const userMock = {
@@ -89,8 +89,7 @@ describe("Given the useUser custom hook", () => {
       } = renderHook(() => useUser(), {
         wrapper: ProviderWrapper,
       });
-      const user: RegisterData = {
-        email: "cristina@email.com",
+      const user: UserCredentials = {
         username: "Cristina",
         password: "12345678",
       };
