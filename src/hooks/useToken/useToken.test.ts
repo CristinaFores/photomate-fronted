@@ -53,4 +53,22 @@ describe("Given the useToken custom hook", () => {
       );
     });
   });
+
+  describe("When its method getToken is invokedk", () => {
+    test("Then its should  call not the dispatch", () => {
+      Storage.prototype.getItem = jest.fn().mockReturnValue("");
+
+      const {
+        result: {
+          current: { getToken },
+        },
+      } = renderHook(() => useToken(), {
+        wrapper: ProviderWrapper,
+      });
+
+      getToken();
+
+      expect(dispatchSpy).not.toHaveBeenCalled();
+    });
+  });
 });
