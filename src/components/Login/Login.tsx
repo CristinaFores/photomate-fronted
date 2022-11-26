@@ -60,8 +60,8 @@ const Login = (): JSX.Element => {
         />
 
         <Button
-          text="Registrase"
-          ariaLabel="Registrase"
+          text="Entrar"
+          ariaLabel="Entrar"
           disabled={isFormEmpty()}
         ></Button>
 
