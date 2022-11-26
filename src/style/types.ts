@@ -14,5 +14,10 @@ declare module "styled-components" {
         disable: string;
       };
     };
+    padding: {
+      big: string;
+      medium: string;
+      small: string;
+    };
   }
 }
