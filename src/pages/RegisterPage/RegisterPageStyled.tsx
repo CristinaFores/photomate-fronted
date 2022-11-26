@@ -14,8 +14,6 @@ export const RegisterPageStyled = styled.main`
     flex-wrap: wrap;
     flex-direction: column;
     align-content: center;
-    padding-left: 560px;
-    padding-right: 560px;
     overflow-x: hidden;
   }
 `;
