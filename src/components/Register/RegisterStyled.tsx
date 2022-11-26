@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const RegisterStyled = styled.form`
+export const FormStyled = styled.form`
   padding-left: 2.62rem;
   padding-right: 2.62rem;
   margin: 5px;
