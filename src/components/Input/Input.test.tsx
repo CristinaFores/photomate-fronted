@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import renderWithProviders from "../../mocks/storeMock";
 import Input from "./Input";
 
