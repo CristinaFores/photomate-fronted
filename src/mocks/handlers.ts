@@ -14,4 +14,7 @@ export const handlers = [
 
     return res(ctx.status(201), ctx.json({}));
   }),
+  rest.post(`${url}/users/login`, async (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ token: "kitten" }));
+  }),
 ];

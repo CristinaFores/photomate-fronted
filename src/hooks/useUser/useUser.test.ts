@@ -2,8 +2,18 @@ import { renderHook } from "@testing-library/react";
 import ProviderWrapper from "../../mocks/ProwiderWrapper";
 import { mockInitialStore } from "../../mocks/storeMock";
 import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
+import { JwtPayloadCustom } from "../../utils/types";
 import { RegisterData } from "./types";
 import useUser from "./useUser";
+
+const userMock = {
+  username: "Cristina",
+  password: "12345678",
+};
+
+jest.mock("jwt-decode", () => {
+  return () => ({ username: userMock.username } as JwtPayloadCustom);
+});
 
 const dispatchSpy = jest.spyOn(mockInitialStore, "dispatch");
 
@@ -65,6 +75,29 @@ describe("Given the custom hook useUser", () => {
       expect(dispatchSpy).toHaveBeenCalledWith(
         showModalActionCreator(actionPayload)
       );
+    });
+  });
+});
+
+describe("Given the useUser custom hook", () => {
+  describe("When its method loginUser is invoked", () => {
+    test("Then its should  call the dispatch", async () => {
+      const {
+        result: {
+          current: { loginUser },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+      const user: RegisterData = {
+        email: "cristina@email.com",
+        username: "Cristina",
+        password: "12345678",
+      };
+
+      await loginUser(user);
+
+      expect(dispatchSpy).toHaveBeenCalledTimes(1);
     });
   });
 });

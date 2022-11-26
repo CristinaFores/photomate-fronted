@@ -8,8 +8,7 @@ import { JwtPayloadCustom } from "../../utils/types";
 const mockUser = {
   username: "cristina",
   id: "123456789",
-  token:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNyaXN0aW5hIiwiaWQiOiIxMjM0NTY3ODkiLCJpYXQiOjE2NjgyNjkxNzksImV4cCI6MTY2ODQ0MTk3OX0.SscRMw9fHjIbNR-cd9NjzCxz-AUUpJ1YSQjZghZOcwo",
+  token: "kitten",
 };
 
 jest.mock("jwt-decode", () => {
@@ -26,12 +25,10 @@ const dispatchSpy = jest.spyOn(mockInitialStore, "dispatch");
 describe("Given the useToken custom hook", () => {
   describe("When its method getToken is invoked", () => {
     test("Then its should  call the dispatch and action  loginUserActionCreator", () => {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNyaXN0aW5hIiwiaWQiOiIxMjM0NTY3ODkiLCJpYXQiOjE2NjgyNjkxNzksImV4cCI6MTY2ODQ0MTk3OX0.SscRMw9fHjIbNR-cd9NjzCxz-AUUpJ1YSQjZghZOcwo";
+      const token = "kitten";
       const user = {
         id: "123456789",
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNyaXN0aW5hIiwiaWQiOiIxMjM0NTY3ODkiLCJpYXQiOjE2NjgyNjkxNzksImV4cCI6MTY2ODQ0MTk3OX0.SscRMw9fHjIbNR-cd9NjzCxz-AUUpJ1YSQjZghZOcwo",
+        token: "kitten",
         username: "cristina",
       };
 
