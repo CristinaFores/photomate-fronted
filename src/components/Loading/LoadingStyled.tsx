@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import mainStyleColors from "../../style/themeColors";
 
 export const LoadingStyled = styled.span`
   .loader {
@@ -15,7 +14,7 @@ export const LoadingStyled = styled.span`
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 2px solid ${mainStyleColors.primaryColor};
+    border: 2px solid ${(props) => props.theme.colors.primary.dark};
     position: absolute;
     left: 0;
     top: 0;

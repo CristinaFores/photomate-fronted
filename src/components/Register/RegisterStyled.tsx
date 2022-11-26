@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import mainStyleColors from "../../style/themeColors";
 
 export const RegisterStyled = styled.form`
   padding-left: 2.62rem;
@@ -22,7 +21,7 @@ export const RegisterStyled = styled.form`
   border-radius: 15px;
 
   p {
-    color: ${mainStyleColors.lightPrimaryColor};
+    color: ${(props) => props.theme.colors.primary.base};
     text-align: center;
     font-weight: 400;
     margin-bottom: 1rem;
@@ -30,12 +29,12 @@ export const RegisterStyled = styled.form`
 `;
 
 export const TextSpanStyled = styled.li`
-  color: ${mainStyleColors.lightPrimaryColor};
+  color: ${(props) => props.theme.colors.primary.base};
   font-weight: 600;
   text-align: center;
   margin-top: 1.5rem;
 
   a {
-    color: ${mainStyleColors.activeColor};
+    color: ${(props) => props.theme.colors.button.active};
   }
 `;

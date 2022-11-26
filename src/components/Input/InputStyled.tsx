@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import mainStyleColors from "../../style/themeColors";
 
 export const InputStyled = styled.input`
   border: none;
-  border-bottom: solid 2px ${mainStyleColors.primaryColor};
+  border-bottom: solid 2px ${(props) => props.theme.colors.primary.dark};
   width: 100%;
   margin-bottom: 1.8rem;
   margin-top: 1.25px;
@@ -11,6 +10,6 @@ export const InputStyled = styled.input`
 
   &:focus {
     outline: none;
-    border-bottom: 2px solid ${mainStyleColors.primaryColor};
+    border-bottom: 2px solid ${(props) => props.theme.colors.primary.dark};
   }
 `;

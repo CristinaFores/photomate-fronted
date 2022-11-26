@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import "../../hooks/useUser/useUser";
@@ -17,7 +17,7 @@ describe("Given Form component", () => {
   describe("When  its render RegisterPage", () => {
     test("Then its should a return a 1 input con texto, and button", () => {
       const nameInput = "Nombre*";
-      render(
+      renderWithProviders(
         <Provider store={mockInitialStore}>
           <GlobalStyle />
           <RegisterPage />

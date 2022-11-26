@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import renderWithProviders from "../../mocks/storeMock";
 import Logo from "./Logo";
 
 describe("Given a Logo component", () => {
@@ -9,7 +10,7 @@ describe("Given a Logo component", () => {
         name: "Photomate",
       };
 
-      render(<Logo />);
+      renderWithProviders(<Logo />);
 
       const renderedHeading = screen.queryByRole("heading", expectedHeading);
 

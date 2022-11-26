@@ -45,35 +45,35 @@ const Register = (): JSX.Element => {
       <RegisterStyled onSubmit={sendUsers}>
         <p>Rellena los campos y empieza a compartir tus fotos con tus amigos</p>
         <Input
-          type={"text"}
-          placeholder={"Nombre"}
-          htmlFor={"username"}
-          textLabel={"Nombre*"}
+          type="text"
+          placeholder="Nombre"
+          htmlFor="username"
+          textLabel="Nombre*"
           onChange={handleInputChange}
-          id={"username"}
+          id="username"
         />
 
         <Input
-          type={"email"}
-          placeholder={"Email"}
-          htmlFor={"email"}
-          textLabel={"Email*"}
+          type="email"
+          placeholder="Email"
+          htmlFor="email"
+          textLabel="Email*"
           onChange={handleInputChange}
-          id={"email"}
+          id="email"
         />
 
         <Input
-          type={"password"}
-          placeholder={"Contraseña"}
-          htmlFor={"password"}
-          textLabel={"Contraseña*"}
+          type="password"
+          placeholder="Contraseña"
+          htmlFor="password"
+          textLabel="Contraseña*"
           onChange={handleInputChange}
-          id={"password"}
+          id="password"
         />
 
         <Button
-          text={"Registrase"}
-          ariaLabel={"Registrase"}
+          text="Registrase"
+          ariaLabel="Registrase"
           disabled={isFormEmpty()}
         ></Button>
 
