@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import "../../hooks/useUser/useUser";
 import useUser from "../../hooks/useUser/useUser";
-import { mockInitialStore } from "../../mocks/storeMock";
+import renderWithProviders, { mockInitialStore } from "../../mocks/storeMock";
 import GlobalStyle from "../../style/GlobalStyle";
 import Register from "./Register";
 
@@ -16,7 +16,7 @@ describe("Given Form component", () => {
   describe("When  its render Register", () => {
     test("Then its should a return a 1 input con texto, and button", () => {
       const nameInput = "Nombre*";
-      render(
+      renderWithProviders(
         <Provider store={mockInitialStore}>
           <GlobalStyle />
           <Register />
@@ -36,7 +36,7 @@ describe("Given Form component", () => {
     describe("When it's rendered button it's clicked ,inside the Register button", () => {
       test("Then the form should be submited a call a register function", async () => {
         const { registerUser } = useUser();
-        render(
+        renderWithProviders(
           <Provider store={mockInitialStore}>
             <GlobalStyle />
             <Register />

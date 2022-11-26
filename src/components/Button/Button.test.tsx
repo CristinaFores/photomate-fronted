@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import renderWithProviders from "../../mocks/storeMock";
 import Button from "./Button";
 
 describe("Given a Button component", () => {
@@ -9,7 +10,9 @@ describe("Given a Button component", () => {
 
       const buttonAction = jest.fn();
 
-      render(<Button text={buttonText} action={buttonAction} ariaLabel={""} />);
+      renderWithProviders(
+        <Button text={buttonText} action={buttonAction} ariaLabel={""} />
+      );
 
       const renderedButton = screen.queryByRole("button", {
         name: buttonText,

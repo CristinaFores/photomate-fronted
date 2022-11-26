@@ -1,11 +1,12 @@
 import { render, screen } from "@testing-library/react";
+import renderWithProviders from "../../mocks/storeMock";
 import Loading from "./Loading";
 
 describe("Given a Loading component", () => {
   describe("When it render", () => {
     test("Then it should reply with the message 'Please wait' by the accesibility function'", () => {
       const expectedMessage = "Please wait";
-      render(<Loading />);
+      renderWithProviders(<Loading />);
 
       const message = screen.getByTestId("custom-element");
 
