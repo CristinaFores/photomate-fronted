@@ -139,25 +139,15 @@ describe("Given the useUser custom hook", () => {
         wrapper: ProviderWrapper,
       });
 
-      const actionPayload: User = {
-        username: "Cristina",
-        id: "123456789",
-        token: undefined!,
+      const expectedPayload = {
+        isError: true,
+        text: undefined!,
       };
-
       await loginUser(user);
 
-      expect(dispatchSpy).toHaveBeenNthCalledWith(
-        1,
-        setLoadingTrueActionCreator()
-      );
-      expect(dispatchSpy).toHaveBeenNthCalledWith(
-        2,
-        setLoadingFalseActionCreator()
-      );
-      expect(dispatchSpy).toHaveBeenNthCalledWith(
-        3,
-        loginUserActionCreator(actionPayload)
+      expect(dispatchSpy).toHaveBeenCalledWith(setLoadingTrueActionCreator());
+      expect(dispatchSpy).toHaveBeenCalledWith(
+        showModalActionCreator(expectedPayload)
       );
     });
   });

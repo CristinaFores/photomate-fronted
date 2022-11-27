@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 
 import { ThemeProvider } from "styled-components";
 import { userReducer } from "../redux/features/userSlice/userSlice";
+import { UserState } from "../redux/features/userSlice/types";
 
 const initialUiState: UiState = {
   modal: {
@@ -18,6 +19,12 @@ const initialUiState: UiState = {
     isError: false,
   },
   isLoading: false,
+};
+const initialState: UserState = {
+  id: "",
+  token: "",
+  username: "",
+  isLogged: false,
 };
 
 export const mockInitialStore: typeof store = configureStore({
@@ -28,6 +35,7 @@ export const mockInitialStore: typeof store = configureStore({
 
   preloadedState: {
     ui: initialUiState,
+    user: initialState,
   },
 });
 
