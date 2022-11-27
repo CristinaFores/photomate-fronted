@@ -1,7 +1,13 @@
 import { renderHook } from "@testing-library/react";
 import ProviderWrapper from "../../mocks/ProwiderWrapper";
 import { mockInitialStore } from "../../mocks/storeMock";
-import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
+import {
+  setLoadingFalseActionCreator,
+  setLoadingTrueActionCreator,
+  showModalActionCreator,
+} from "../../redux/features/uiSlice/uiSlice";
+import { User } from "../../redux/features/userSlice/types";
+import { loginUserActionCreator } from "../../redux/features/userSlice/userSlice";
 import { JwtPayloadCustom } from "../../utils/types";
 import { RegisterData, UserCredentials } from "./types";
 import useUser from "./useUser";
@@ -9,10 +15,12 @@ import useUser from "./useUser";
 const userMock = {
   username: "Cristina",
   password: "12345678",
+  id: "123456789",
 };
 
 jest.mock("jwt-decode", () => {
-  return () => ({ username: userMock.username } as JwtPayloadCustom);
+  return () =>
+    ({ username: userMock.username, id: userMock.id } as JwtPayloadCustom);
 });
 
 const dispatchSpy = jest.spyOn(mockInitialStore, "dispatch");
@@ -82,6 +90,10 @@ describe("Given the custom hook useUser", () => {
 describe("Given the useUser custom hook", () => {
   describe("When its method loginUser is invoked", () => {
     test("Then its should  call the dispatch", async () => {
+      const user: UserCredentials = {
+        username: "Cristina",
+        password: "123456789",
+      };
       const {
         result: {
           current: { loginUser },
@@ -89,14 +101,64 @@ describe("Given the useUser custom hook", () => {
       } = renderHook(() => useUser(), {
         wrapper: ProviderWrapper,
       });
-      const user: UserCredentials = {
+
+      const actionPayload: User = {
         username: "Cristina",
-        password: "12345678",
+        id: "123456789",
+        token: "kitten",
       };
 
       await loginUser(user);
 
-      expect(dispatchSpy).toHaveBeenCalledTimes(1);
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        1,
+        setLoadingTrueActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        2,
+        setLoadingFalseActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        3,
+        loginUserActionCreator(actionPayload)
+      );
+    });
+  });
+
+  describe("When its method loginUser is invoked with username incorrect", () => {
+    test("Then its should  call the dispatch loginUserActionCreatorError", async () => {
+      const user: UserCredentials = {
+        username: "Cristina",
+        password: "12345678",
+      };
+      const {
+        result: {
+          current: { loginUser },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+
+      const actionPayload: User = {
+        username: "Cristina",
+        id: "123456789",
+        token: undefined!,
+      };
+
+      await loginUser(user);
+
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        1,
+        setLoadingTrueActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        2,
+        setLoadingFalseActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        3,
+        loginUserActionCreator(actionPayload)
+      );
     });
   });
 });

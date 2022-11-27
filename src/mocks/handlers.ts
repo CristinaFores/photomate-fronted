@@ -1,6 +1,6 @@
 // src/mocks/handlers.js
 import { rest } from "msw";
-import { RegisterData } from "../hooks/useUser/types";
+import { RegisterData, UserCredentials } from "../hooks/useUser/types";
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -14,7 +14,17 @@ export const handlers = [
 
     return res(ctx.status(201), ctx.json({}));
   }),
+
   rest.post(`${url}/users/login`, async (req, res, ctx) => {
+    const { password } = await req.json<UserCredentials>();
+
+    if (password === "12345678") {
+      return res(
+        ctx.status(401),
+        ctx.json({ error: "Incorrect username or password" })
+      );
+    }
+
     return res(ctx.status(200), ctx.json({ token: "kitten" }));
   }),
 ];
