@@ -61,6 +61,7 @@ const Login = (): JSX.Element => {
         />
 
         <Button
+          styleType="big"
           text="Entrar"
           ariaLabel="Entrar"
           disabled={isFormEmpty()}
