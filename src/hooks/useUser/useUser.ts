@@ -53,6 +53,11 @@ const useUser = () => {
         },
       });
       const { token } = await response.json();
+
+      if (!token) {
+        throw new Error();
+      }
+
       const tokenPayload: JwtPayloadCustom = decodeToken(token);
       const { username, id } = tokenPayload;
 
