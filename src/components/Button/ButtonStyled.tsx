@@ -1,10 +1,19 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const ButtonStyled = styled.button`
+interface ButtonStyledProps {
+  styleType: "small" | "big";
+}
+
+const smallButton = css`
+  width: 6rem;
+`;
+const bigButton = css`
+  width: 100%;
+`;
+const ButtonStyled = styled.button<ButtonStyledProps>`
   font-family: inherit;
   height: 50px;
   border: none;
-  width: 100%;
   font-size: 20px;
   color: ${(props) => props.theme.colors.primary.light};
   border-radius: 6px;
@@ -19,6 +28,8 @@ const ButtonStyled = styled.button`
   &:disabled {
     background-color: ${(props) => props.theme.colors.button.disable};
   }
+  ${({ styleType }) => styleType === "small" && smallButton}
+  ${({ styleType }) => styleType === "big" && bigButton}
 `;
 
 export default ButtonStyled;
