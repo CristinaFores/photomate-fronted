@@ -13,3 +13,7 @@ export const InputStyled = styled.input`
     border-bottom: 2px solid ${(props) => props.theme.colors.primary.dark};
   }
 `;
+
+export const InputLabelStyled = styled.label`
+  font-weight: bold;
+`;
