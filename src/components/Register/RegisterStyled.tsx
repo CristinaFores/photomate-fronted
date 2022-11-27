@@ -4,9 +4,10 @@ export const FormStyled = styled.form`
   padding-left: 2.62rem;
   padding-right: 2.62rem;
   margin: 5px;
-  @media (min-width: 700px) {
-    padding-left: 6.25rem;
-    padding-right: 6.25rem;
+
+  @media (min-width: 1000px) {
+    padding-left: 5.25rem;
+    padding-right: 5.25rem;
   }
 
   padding-top: 2.625rem;

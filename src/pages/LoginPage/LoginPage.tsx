@@ -1,17 +1,17 @@
 import Header from "../../components/Header/Header";
+import Login from "../../components/Login/Login";
 import Logo from "../../components/Logo/Logo";
-import Register from "../../components/Register/Register";
-import { FormPageStyled } from "./RegisterPageStyled";
+import { FormPageStyled } from "../RegisterPage/RegisterPageStyled";
 
-const RegisterPage = (): JSX.Element => {
+const LoginPage = (): JSX.Element => {
   return (
     <>
       <Header children={<Logo />} />
       <FormPageStyled>
-        <Register />
+        <Login />
       </FormPageStyled>
     </>
   );
 };
 
-export default RegisterPage;
+export default LoginPage;

@@ -4,6 +4,7 @@ import useUser from "../../hooks/useUser/useUser";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { FormStyled, TextSpanStyled } from "../Register/RegisterStyled";
+import { Link } from "react-router-dom";
 
 const Login = (): JSX.Element => {
   const { loginUser } = useUser();
@@ -67,7 +68,7 @@ const Login = (): JSX.Element => {
 
         <TextSpanStyled>
           <span>¿Ya tienes una cuenta? </span>
-          <a href="/"> Registrarse</a>
+          <Link to={"/register"}> Registrarse</Link>
         </TextSpanStyled>
       </FormStyled>
     </>

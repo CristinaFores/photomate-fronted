@@ -7,11 +7,11 @@ import { RootState, store } from "../redux/store";
 import mainStyleColors from "../style/themeColors";
 import GlobalStyle from "../style/GlobalStyle";
 import { Provider } from "react-redux";
-
+import { InitialEntry } from "@remix-run/router";
 import { ThemeProvider } from "styled-components";
 import { userReducer } from "../redux/features/userSlice/userSlice";
 import { UserState } from "../redux/features/userSlice/types";
-
+import { MemoryRouter } from "react-router-dom";
 const initialUiState: UiState = {
   modal: {
     text: "",
@@ -44,12 +44,28 @@ export interface ExtendedRenderOptions extends RenderOptions {
   store?: typeof store;
 }
 
+interface ExtendedPropsWithChildren extends PropsWithChildren {
+  initialEntries?: InitialEntry[];
+}
+
+const Router = ({
+  children,
+  initialEntries,
+}: ExtendedPropsWithChildren): JSX.Element => {
+  return (
+    <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>
+  );
+};
+
 const renderWithProviders = (
   ui: React.ReactElement,
   {
     preloadedState,
     store = configureStore({
-      reducer: { ui: uiReducer, user: userReducer },
+      reducer: {
+        ui: uiReducer,
+        user: userReducer,
+      },
       preloadedState,
     }),
     ...renderOptions
@@ -57,12 +73,16 @@ const renderWithProviders = (
 ) => {
   const Wrapper = ({ children }: PropsWithChildren<{}>): JSX.Element => {
     return (
-      <Provider store={store}>
-        <ThemeProvider theme={mainStyleColors}>
-          <GlobalStyle />
-          {children}
-        </ThemeProvider>
-      </Provider>
+      <>
+        <Router>
+          <Provider store={store}>
+            <ThemeProvider theme={mainStyleColors}>
+              <GlobalStyle />
+              {children}
+            </ThemeProvider>
+          </Provider>
+        </Router>
+      </>
     );
   };
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
