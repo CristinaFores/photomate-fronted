@@ -17,6 +17,7 @@ const mainStyleColors: DefaultTheme = {
     big: "20px",
     medium: "15px",
     small: "10px",
+    topPages: "3rem",
   },
 };
 
