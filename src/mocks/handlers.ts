@@ -20,7 +20,7 @@ export const handlers = [
 
     if (password === "12345678") {
       return res(
-        ctx.status(500),
+        ctx.status(401),
         ctx.json({ error: "Incorrect username or password" })
       );
     }

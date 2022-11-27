@@ -1,7 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import ProviderWrapper from "../../mocks/ProwiderWrapper";
 import { mockInitialStore } from "../../mocks/storeMock";
-import { ShowModalActionPayload } from "../../redux/features/uiSlice/types";
 import {
   setLoadingFalseActionCreator,
   setLoadingTrueActionCreator,
@@ -130,7 +129,7 @@ describe("Given the useUser custom hook", () => {
     test("Then its should  call the dispatch loginUserActionCreatorError", async () => {
       const user: UserCredentials = {
         username: "Cristina",
-        password: "123456789",
+        password: "12345678",
       };
       const {
         result: {
@@ -143,7 +142,7 @@ describe("Given the useUser custom hook", () => {
       const actionPayload: User = {
         username: "Cristina",
         id: "123456789",
-        token: "kitten",
+        token: undefined!,
       };
 
       await loginUser(user);
