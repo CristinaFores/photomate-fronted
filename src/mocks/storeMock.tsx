@@ -11,7 +11,7 @@ import { InitialEntry } from "@remix-run/router";
 import { ThemeProvider } from "styled-components";
 import { userReducer } from "../redux/features/userSlice/userSlice";
 import { UserState } from "../redux/features/userSlice/types";
-import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 const initialUiState: UiState = {
   modal: {
     text: "",
