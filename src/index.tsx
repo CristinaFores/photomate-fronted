@@ -9,18 +9,21 @@ import "@fontsource/roboto";
 import "@fontsource/dancing-script";
 import { ThemeProvider } from "styled-components";
 import mainStyleColors from "./style/themeColors";
+import { BrowserRouter } from "react-router-dom";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={mainStyleColors}>
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <ThemeProvider theme={mainStyleColors}>
+          <GlobalStyle />
+          <App />
+        </ThemeProvider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
