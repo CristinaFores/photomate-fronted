@@ -16,14 +16,14 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <ThemeProvider theme={mainStyleColors}>
-          <GlobalStyle />
+    <Provider store={store}>
+      <ThemeProvider theme={mainStyleColors}>
+        <GlobalStyle />
+        <BrowserRouter>
           <App />
-        </ThemeProvider>
-      </Provider>
-    </BrowserRouter>
+        </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
 
