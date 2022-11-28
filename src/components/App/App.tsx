@@ -28,7 +28,7 @@ const App = () => {
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/*" element={<NotFoundPage />} />
 
           {showModal && <Modal isError={isError} text={text} />}
         </Routes>
