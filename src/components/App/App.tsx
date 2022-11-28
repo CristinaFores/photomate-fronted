@@ -1,10 +1,6 @@
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import useToken from "../../hooks/useToken/useToken";
-import LoginPage from "../../pages/LoginPage/LoginPage";
-import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
-import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import { useAppSelector } from "../../redux/hooks";
 import mainStyleColors from "../../style/themeColors";
 import Layout from "../Layout/Layout";

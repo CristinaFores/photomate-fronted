@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
-import Header from "../../components/Header/Header";
-import Logo from "../../components/Logo/Logo";
 import { NotFoundPageStyled, StyledContaint } from "./NotFoundStyled";
 
 const NotFoundPage = () => {
