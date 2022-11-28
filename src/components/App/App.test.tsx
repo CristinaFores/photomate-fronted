@@ -3,11 +3,8 @@ import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import mainStyleColors from "../../style/themeColors";
 import { Provider } from "react-redux";
-
 import { render, screen } from "@testing-library/react";
 import renderWithProviders, { mockInitialStore } from "../../mocks/storeMock";
-import Modal from "../Modal/Modal";
-import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
 
 describe("Given an App componen", () => {
   describe("When it's render", () => {
