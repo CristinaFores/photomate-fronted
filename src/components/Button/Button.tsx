@@ -7,7 +7,6 @@ interface ButtonProps {
   ariaLabel: string;
   onSubmit?: React.FormEventHandler<HTMLButtonElement>;
   styleType: "big" | "small";
-  type?: string;
 }
 
 const Button = ({
@@ -17,7 +16,6 @@ const Button = ({
   onSubmit,
   disabled,
   styleType,
-  type,
 }: ButtonProps): JSX.Element => {
   return (
     <ButtonStyled
@@ -27,7 +25,6 @@ const Button = ({
       aria-label={ariaLabel}
       disabled={disabled}
       onSubmit={onSubmit}
-      type="button"
     >
       {text}
     </ButtonStyled>
