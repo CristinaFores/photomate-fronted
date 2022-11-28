@@ -11,7 +11,6 @@ const NotFoundPage = () => {
   };
   return (
     <>
-      <Header children={<Logo />} />
       <NotFoundPageStyled>
         <StyledContaint>
           <h1>Algo a fallado esta pagina no esta disponible</h1>
