@@ -9,7 +9,14 @@ import Navbar from "../NavBar/Navbar";
 const Layout = (): JSX.Element => {
   return (
     <>
-      <Header children={[<Logo />, <Navbar />]} />
+      <Header
+        children={
+          <>
+            <Logo />
+            <Navbar />
+          </>
+        }
+      />
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
