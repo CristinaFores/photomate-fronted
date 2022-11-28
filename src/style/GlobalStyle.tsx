@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
 html,
 body {
   height: 100%;
-  margin: 0;
+  margin: 0
 }
 
 
@@ -21,14 +21,14 @@ html {
 img {
   display: block;
   max-width: 100%;
+  
 }
+
 
 ul {
     list-style: none;
     list-style-position: outside;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    padding-inline-start: 0;
+
 }
 
 input,

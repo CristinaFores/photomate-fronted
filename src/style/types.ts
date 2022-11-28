@@ -18,6 +18,7 @@ declare module "styled-components" {
       big: string;
       medium: string;
       small: string;
+      topPages: string;
     };
   }
 }

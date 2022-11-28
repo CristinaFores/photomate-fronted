@@ -1,5 +1,5 @@
 import React from "react";
-import { InputStyled } from "./InputStyled";
+import { InputLabelStyled, InputStyled } from "./InputStyled";
 
 interface InputProps {
   type: React.HTMLInputTypeAttribute;
@@ -24,7 +24,7 @@ const Input = ({
 }: InputProps) => {
   return (
     <>
-      <label htmlFor={htmlFor}>{textLabel}</label>
+      <InputLabelStyled htmlFor={htmlFor}>{textLabel}</InputLabelStyled>
       <InputStyled
         type={type}
         placeholder={placeholder}

@@ -11,7 +11,12 @@ describe("Given a Button component", () => {
       const buttonAction = jest.fn();
 
       renderWithProviders(
-        <Button text={buttonText} action={buttonAction} ariaLabel={""} />
+        <Button
+          styleType="big"
+          text={buttonText}
+          action={buttonAction}
+          ariaLabel={""}
+        />
       );
 
       const renderedButton = screen.queryByRole("button", {

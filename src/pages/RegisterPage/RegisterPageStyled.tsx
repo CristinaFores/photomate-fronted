@@ -5,16 +5,8 @@ export const FormPageStyled = styled.main`
   align-content: center;
   flex-direction: column;
   overflow-x: hidden;
-  padding-left: 0.3rem;
-  padding-right: 0.3rem;
+  max-width: 80%;
+  width: 500px;
   padding-top: 3rem;
-
-  @media (min-width: 1000px) {
-    display: flex;
-    padding-left: 30rem;
-    padding-right: 30rem;
-    flex-direction: column;
-    align-content: center;
-    overflow-x: hidden;
-  }
+  margin: 0 auto;
 `;

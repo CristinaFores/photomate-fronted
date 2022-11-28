@@ -72,6 +72,7 @@ const Register = (): JSX.Element => {
         />
 
         <Button
+          styleType="big"
           text="Registrase"
           ariaLabel="Registrase"
           disabled={isFormEmpty()}
