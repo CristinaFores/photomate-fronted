@@ -2,12 +2,10 @@ import { renderHook } from "@testing-library/react";
 import ProviderWrapper from "../../mocks/ProwiderWrapper";
 import { mockInitialStore } from "../../mocks/storeMock";
 import {
-  setLoadingFalseActionCreator,
-  setLoadingTrueActionCreator,
+  hiddenLoadingActionCreator,
+  showLoadingActionCreator,
   showModalActionCreator,
 } from "../../redux/features/uiSlice/uiSlice";
-import { User } from "../../redux/features/userSlice/types";
-import { loginUserActionCreator } from "../../redux/features/userSlice/userSlice";
 import { JwtPayloadCustom } from "../../utils/types";
 import { RegisterData, UserCredentials } from "./types";
 import useUser from "./useUser";
@@ -89,7 +87,7 @@ describe("Given the custom hook useUser", () => {
 
 describe("Given the useUser custom hook", () => {
   describe("When its method loginUser is invoked", () => {
-    test("Then its should  call the dispatch", async () => {
+    test("Then its should  call the dispatch with actions showLoadingActionCreator and hiddenLoadingActionCreator", async () => {
       const user: UserCredentials = {
         username: "Cristina",
         password: "123456789",
@@ -102,35 +100,21 @@ describe("Given the useUser custom hook", () => {
         wrapper: ProviderWrapper,
       });
 
-      const actionPayload: User = {
-        username: "Cristina",
-        id: "123456789",
-        token: "kitten",
-      };
-
       await loginUser(user);
 
-      expect(dispatchSpy).toHaveBeenNthCalledWith(
-        1,
-        setLoadingTrueActionCreator()
-      );
-      expect(dispatchSpy).toHaveBeenNthCalledWith(
-        2,
-        setLoadingFalseActionCreator()
-      );
-      expect(dispatchSpy).toHaveBeenNthCalledWith(
-        3,
-        loginUserActionCreator(actionPayload)
-      );
+      expect(dispatchSpy).toHaveBeenCalledWith(showLoadingActionCreator());
+
+      expect(dispatchSpy).toHaveBeenCalledWith(hiddenLoadingActionCreator());
     });
   });
 
-  describe("When its method loginUser is invoked with username incorrect", () => {
-    test("Then its should  call the dispatch loginUserActionCreatorError", async () => {
+  describe("When its method loginUser is invoked with token incorrect", () => {
+    test("Then its should  call the dispatch showLoadingActionCreator", async () => {
       const user: UserCredentials = {
         username: "Cristina",
         password: "12345678",
       };
+
       const {
         result: {
           current: { loginUser },
@@ -139,16 +123,8 @@ describe("Given the useUser custom hook", () => {
         wrapper: ProviderWrapper,
       });
 
-      const expectedPayload = {
-        isError: true,
-        text: undefined!,
-      };
       await loginUser(user);
-
-      expect(dispatchSpy).toHaveBeenCalledWith(setLoadingTrueActionCreator());
-      expect(dispatchSpy).toHaveBeenCalledWith(
-        showModalActionCreator(expectedPayload)
-      );
+      expect(dispatchSpy).toHaveBeenCalledWith(showLoadingActionCreator());
     });
   });
 });
