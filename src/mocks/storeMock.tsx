@@ -11,7 +11,7 @@ import { InitialEntry } from "@remix-run/router";
 import { ThemeProvider } from "styled-components";
 import { userReducer } from "../redux/features/userSlice/userSlice";
 import { UserState } from "../redux/features/userSlice/types";
-import { MemoryRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 const initialUiState: UiState = {
   modal: {
     text: "",
@@ -42,6 +42,7 @@ export const mockInitialStore: typeof store = configureStore({
 export interface ExtendedRenderOptions extends RenderOptions {
   preloadedState?: PreloadedState<RootState>;
   store?: typeof store;
+  initialEntries?: InitialEntry[];
 }
 
 interface ExtendedPropsWithChildren extends PropsWithChildren {
@@ -52,9 +53,7 @@ const Router = ({
   children,
   initialEntries,
 }: ExtendedPropsWithChildren): JSX.Element => {
-  return (
-    <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>
-  );
+  return <BrowserRouter>{children}</BrowserRouter>;
 };
 
 const renderWithProviders = (
