@@ -7,7 +7,7 @@ export const InputStyled = styled.input`
   margin-bottom: 1.8rem;
   margin-top: 1.25px;
   display: block;
-
+  border-radius: 0;
   &:focus {
     outline: none;
     border-bottom: 2px solid ${(props) => props.theme.colors.primary.dark};
