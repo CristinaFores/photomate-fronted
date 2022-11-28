@@ -14,19 +14,19 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: initialUiState,
   reducers: {
-    setLoadinTrue: (currentUiState) => ({
+    showLoading: (currentUiState) => ({
       ...currentUiState,
       isLoading: true,
     }),
-    setLoadingFalse: (currentUiState) => ({
+    hiddeLoading: (currentUiState) => ({
       ...currentUiState,
       isLoading: false,
     }),
-    showModalError: (
+    showModal: (
       currentUiState,
       action: PayloadAction<ShowModalActionPayload>
     ) => ({
-      ...currentUiState,
+      ...initialUiState,
       modal: {
         text: action.payload.text,
         isError: action.payload.isError,
@@ -34,7 +34,7 @@ const uiSlice = createSlice({
       },
     }),
     hiddenModal: (currentUiState) => ({
-      ...currentUiState,
+      ...initialUiState,
       modal: {
         text: "",
         showModal: false,
@@ -45,9 +45,9 @@ const uiSlice = createSlice({
 });
 
 export const {
-  setLoadinTrue: setLoadingTrueActionCreator,
-  setLoadingFalse: setLoadingFalseActionCreator,
-  showModalError: showModalActionCreator,
+  showLoading: showLoadingActionCreator,
+  hiddeLoading: hiddenLoadingActionCreator,
+  showModal: showModalActionCreator,
   hiddenModal: hiddenModalActionCreator,
 } = uiSlice.actions;
 

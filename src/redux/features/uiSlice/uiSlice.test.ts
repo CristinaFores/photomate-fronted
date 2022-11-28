@@ -1,8 +1,8 @@
 import { UiState } from "./types";
 import {
   hiddenModalActionCreator,
-  setLoadingFalseActionCreator,
-  setLoadingTrueActionCreator,
+  hiddenLoadingActionCreator,
+  showLoadingActionCreator,
   showModalActionCreator,
   uiReducer,
 } from "./uiSlice";
@@ -24,7 +24,7 @@ describe("Given a uiReducer setLoadingTrue", () => {
         isLoading: true,
       };
 
-      const newUiState = uiReducer(mockUiState, setLoadingTrueActionCreator());
+      const newUiState = uiReducer(mockUiState, showLoadingActionCreator());
 
       expect(newUiState).toStrictEqual(expectedUiState);
     });
@@ -38,7 +38,7 @@ describe("Given a uiReducer setLoadingFalse", () => {
         ...mockUiState,
         isLoading: false,
       };
-      const newUiState = uiReducer(mockUiState, setLoadingFalseActionCreator());
+      const newUiState = uiReducer(mockUiState, hiddenLoadingActionCreator());
 
       expect(newUiState).toStrictEqual(expectedUiState);
     });
