@@ -28,6 +28,7 @@ img {
 ul {
     list-style: none;
     list-style-position: outside;
+    padding: 0;
 
 }
 

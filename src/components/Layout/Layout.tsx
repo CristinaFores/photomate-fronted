@@ -4,11 +4,12 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import Header from "../Header/Header";
 import Logo from "../Logo/Logo";
+import Navbar from "../NavBar/Navbar";
 
 const Layout = (): JSX.Element => {
   return (
     <>
-      <Header children={<Logo />} />
+      <Header children={[<Logo />, <Navbar />]} />
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

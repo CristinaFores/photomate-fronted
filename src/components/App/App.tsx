@@ -7,6 +7,7 @@ import Layout from "../Layout/Layout";
 import Loading from "../Loading/Loading";
 
 import Modal from "../Modal/Modal";
+import Navbar from "../NavBar/Navbar";
 
 const App = () => {
   const {
