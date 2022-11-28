@@ -3,9 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import useToken from "../../hooks/useToken/useToken";
 import LoginPage from "../../pages/LoginPage/LoginPage";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import { useAppSelector } from "../../redux/hooks";
 import mainStyleColors from "../../style/themeColors";
+import Loading from "../Loading/Loading";
 
 import Modal from "../Modal/Modal";
 
@@ -27,9 +29,10 @@ const App = () => {
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-        </Routes>
+          <Route path="*" element={<NotFoundPage />} />
 
-        {showModal && <Modal isError={isError} text={text} />}
+          {showModal && <Modal isError={isError} text={text} />}
+        </Routes>
       </ThemeProvider>
     </>
   );

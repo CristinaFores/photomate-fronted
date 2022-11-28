@@ -3,25 +3,11 @@ import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import mainStyleColors from "../../style/themeColors";
 import { Provider } from "react-redux";
-import { store } from "../../redux/store";
+
 import { render, screen } from "@testing-library/react";
-
-import { mockInitialStore } from "../../mocks/storeMock";
-
-const mockError = {
-  modal: {
-    isError: true,
-    text: "Algo ha ido mal",
-    showModal: true,
-  },
-  isLoading: true,
-};
-
-jest.mock("react-redux", () => ({
-  ...jest.requireActual("react-redux"),
-  useAppDispatch: () => jest.fn(),
-  useAppSelector: () => mockError,
-}));
+import renderWithProviders, { mockInitialStore } from "../../mocks/storeMock";
+import Modal from "../Modal/Modal";
+import { showModalActionCreator } from "../../redux/features/uiSlice/uiSlice";
 
 describe("Given an App componen", () => {
   describe("When it's render", () => {
@@ -49,30 +35,10 @@ describe("Given an App componen", () => {
 describe("Given an App component", () => {
   describe("When it's render", () => {
     test("Then it shoul render an App Component, with input name 'Nombre', a button  with text 'Entrar', and link 'Entrar", () => {
-      const mockModal = {
-        modal: {
-          isError: false,
-          text: "Perfecto",
-          showModal: true,
-        },
-        isLoading: false,
-      };
-
-      jest.mock("react-redux", () => ({
-        ...jest.requireActual("react-redux"),
-        useAppDispatch: () => jest.fn(),
-        useAppSelector: () => mockModal,
-      }));
-
-      render(
-        <Provider store={store}>
-          <ThemeProvider theme={mainStyleColors}>
-            <MemoryRouter initialEntries={["/"]}>
-              <App />
-            </MemoryRouter>
-          </ThemeProvider>
-        </Provider>
-      );
+      renderWithProviders(<App />, {
+        initialEntries: ["/"],
+        store: mockInitialStore,
+      });
 
       const expectIinputName = screen.queryByRole("textbox", {
         name: "Nombre*",
@@ -80,7 +46,7 @@ describe("Given an App component", () => {
       const button = screen.queryByRole("button", {
         name: "Entrar",
       })!;
-      const renderLink = screen.getByRole("link", {
+      const renderLink = screen.queryByRole("link", {
         name: "Registrarse",
       });
 
