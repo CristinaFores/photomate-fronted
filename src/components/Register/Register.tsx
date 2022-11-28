@@ -49,7 +49,7 @@ const Register = (): JSX.Element => {
           type="text"
           placeholder="Nombre"
           htmlFor="username"
-          textLabel="Nombre*"
+          textLabel="Usuario*"
           onChange={handleInputChange}
           id="username"
         />

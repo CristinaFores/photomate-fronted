@@ -45,7 +45,7 @@ describe("Given Form component", () => {
         );
 
         const expectIinputName = screen.queryByRole("textbox", {
-          name: "Nombre*",
+          name: "Usuario**",
         })!;
 
         const expectIinputEmail = screen.queryByRole("textbox", {
