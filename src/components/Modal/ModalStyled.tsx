@@ -17,6 +17,7 @@ export const ModalStyled = styled.div`
     inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   font-size: 1.5rem;
+  background-color: ${(props) => props.theme.colors.primary.light};
   .circle {
     font-size: 1rem;
     font-size: 1rem;
