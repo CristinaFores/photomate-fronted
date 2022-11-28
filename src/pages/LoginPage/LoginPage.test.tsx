@@ -14,7 +14,7 @@ jest.mock("../../hooks/useUser/useUser", () => {
 describe("Given Form component", () => {
   describe("When  its render LoginPage", () => {
     test("Then its should a return a 1 input con texto, and button", () => {
-      const nameInput = "Usuario**";
+      const nameInput = "Usuario*";
       renderWithProviders(<LoginPage />);
 
       const expectedInput = screen.getByRole("textbox", {
@@ -33,7 +33,7 @@ describe("Given Form component", () => {
         renderWithProviders(<LoginPage />);
 
         const expectIinputName = screen.queryByRole("textbox", {
-          name: "Usuario**",
+          name: "Usuario*",
         })!;
 
         const passwordInput = screen.queryByLabelText("Contraseña*")!;
