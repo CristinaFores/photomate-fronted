@@ -38,7 +38,7 @@ describe("Given an App component", () => {
       });
 
       const expectIinputName = screen.queryByRole("textbox", {
-        name: "Nombre*",
+        name: "Usuario*",
       })!;
       const button = screen.queryByRole("button", {
         name: "Entrar",

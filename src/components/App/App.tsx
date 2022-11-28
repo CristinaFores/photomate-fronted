@@ -7,11 +7,13 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import { useAppSelector } from "../../redux/hooks";
 import mainStyleColors from "../../style/themeColors";
+import Loading from "../Loading/Loading";
 
 import Modal from "../Modal/Modal";
 
 const App = () => {
   const {
+    isLoading,
     modal: { text, isError, showModal },
   } = useAppSelector((state) => state.ui);
 
@@ -24,13 +26,13 @@ const App = () => {
   return (
     <>
       <ThemeProvider theme={mainStyleColors}>
+        {isLoading && <Loading />}
+        {showModal && <Modal isError={isError} text={text} />}
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-
-          {showModal && <Modal isError={isError} text={text} />}
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </ThemeProvider>
     </>

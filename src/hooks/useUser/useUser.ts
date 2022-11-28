@@ -1,8 +1,9 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
-  setLoadingFalseActionCreator,
-  setLoadingTrueActionCreator,
+  hiddenLoadingActionCreator,
+  showLoadingActionCreator,
   showModalActionCreator,
 } from "../../redux/features/uiSlice/uiSlice";
 import { User } from "../../redux/features/userSlice/types";
@@ -11,12 +12,9 @@ import decodeToken from "../../utils/decode";
 import { JwtPayloadCustom } from "../../utils/types";
 import { RegisterData, UserCredentials } from "./types";
 
-export interface AxiosErrorResponseBody {
-  error: string;
-}
-
 const useUser = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const urlApi = process.env.REACT_APP_API_URL;
 
   const registerUser = async (userRegister: RegisterData) => {
@@ -29,6 +27,7 @@ const useUser = () => {
           text: "Te has registrado correctamente, Por favor inicia sesión",
         })
       );
+      navigate("/login");
     } catch (error: unknown) {
       dispatch(
         showModalActionCreator({
@@ -40,41 +39,32 @@ const useUser = () => {
   };
 
   const loginUser = async (userData: UserCredentials) => {
-    dispatch(setLoadingTrueActionCreator());
     try {
-      const response = await fetch(`${urlApi}/users/login`, {
-        method: "POST",
-        body: JSON.stringify({
-          username: userData.username,
-          password: userData.password,
-        }),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-      const { token } = await response.json();
-
-      if (!token) {
-        throw new Error();
-      }
+      dispatch(showLoadingActionCreator());
+      const response = await axios.post(`${urlApi}/users/login`, userData);
+      const token = await response.data;
 
       const tokenPayload: JwtPayloadCustom = decodeToken(token);
-      const { username, id } = tokenPayload;
 
       const loggedUser: User = {
-        username,
-        id,
-        token,
+        id: tokenPayload.id,
+        token: token,
+        username: tokenPayload.username,
       };
-      dispatch(setLoadingFalseActionCreator());
+
       dispatch(loginUserActionCreator(loggedUser));
+      dispatch(hiddenLoadingActionCreator());
+      showModalActionCreator({
+        isError: false,
+        text: "Sesion iniciada",
+      });
       window.localStorage.setItem("token", token);
+      return true;
     } catch (error: unknown) {
       dispatch(
         showModalActionCreator({
           isError: true,
-          text: (error as AxiosError<AxiosErrorResponseBody>).response?.data
-            .error!,
+          text: "Los datos introducidos son incorrectos",
         })
       );
     }

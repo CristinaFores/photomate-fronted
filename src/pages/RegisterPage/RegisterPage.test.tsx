@@ -16,7 +16,7 @@ jest.mock("../../hooks/useUser/useUser", () => {
 describe("Given Form component", () => {
   describe("When  its render RegisterPage", () => {
     test("Then its should a return a 1 input con texto, and button", () => {
-      const nameInput = "Nombre*";
+      const nameInput = "Usuario*";
       renderWithProviders(
         <Provider store={mockInitialStore}>
           <GlobalStyle />
@@ -45,7 +45,7 @@ describe("Given Form component", () => {
         );
 
         const expectIinputName = screen.queryByRole("textbox", {
-          name: "Nombre*",
+          name: "Usuario*",
         })!;
 
         const expectIinputEmail = screen.queryByRole("textbox", {

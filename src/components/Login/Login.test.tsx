@@ -15,7 +15,7 @@ jest.mock("../../hooks/useUser/useUser", () => {
 describe("Given Login component", () => {
   describe("When it us rendered", () => {
     test("Then its should show input with text: 'Nombre*', a button with text 'Entrar'and  link with text: 'Registrarse'", () => {
-      const nameInput = "Nombre*";
+      const nameInput = "Usuario*";
       const nameButton = "Entrar";
       const nameLink = "Registrarse";
 
@@ -46,7 +46,7 @@ describe("Given Login component", () => {
         renderWithProviders(<Login />);
 
         const expectIinputName = screen.queryByRole("textbox", {
-          name: "Nombre*",
+          name: "Usuario*",
         })!;
         const button = screen.queryByRole("button", {
           name: "Entrar",

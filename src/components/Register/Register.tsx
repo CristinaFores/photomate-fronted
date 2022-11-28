@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { RegisterData } from "../../hooks/useUser/types";
 import useUser from "../../hooks/useUser/useUser";
 import Button from "../Button/Button";
@@ -48,7 +49,7 @@ const Register = (): JSX.Element => {
           type="text"
           placeholder="Nombre"
           htmlFor="username"
-          textLabel="Nombre*"
+          textLabel="Usuario*"
           onChange={handleInputChange}
           id="username"
         />
@@ -80,7 +81,7 @@ const Register = (): JSX.Element => {
 
         <TextSpanStyled>
           <span>¿Ya tienes una cuenta? </span>
-          <a href="/"> Entrar</a>
+          <Link to={"/login"}> Entrar</Link>
         </TextSpanStyled>
       </FormStyled>
     </>
