@@ -1,9 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
 import Logo from "../../components/Logo/Logo";
 import { NotFoundPageStyled, StyledContaint } from "./NotFoundStyled";
 
 const NotFoundPage = () => {
+  const navigate = useNavigate();
+  const navigateHome = () => {
+    navigate("/");
+  };
   return (
     <>
       <Header children={<Logo />} />
@@ -15,6 +20,7 @@ const NotFoundPage = () => {
             ariaLabel={"VOLVER"}
             styleType="small"
             disabled={false}
+            action={navigateHome}
           />
         </StyledContaint>
         <img
