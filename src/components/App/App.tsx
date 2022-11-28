@@ -7,7 +7,6 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import { useAppSelector } from "../../redux/hooks";
 import mainStyleColors from "../../style/themeColors";
-import Loading from "../Loading/Loading";
 
 import Modal from "../Modal/Modal";
 
