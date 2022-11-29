@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { ThemeProvider } from "styled-components";
+import usePost from "../../hooks/usePost/usePost";
 import useToken from "../../hooks/useToken/useToken";
 import { useAppSelector } from "../../redux/hooks";
-import mainStyleColors from "../../style/themeColors";
 import Layout from "../Layout/Layout";
 import Loading from "../Loading/Loading";
 import Modal from "../Modal/Modal";
@@ -14,18 +13,17 @@ const App = () => {
   } = useAppSelector((state) => state.ui);
 
   const { getToken } = useToken();
-
+  const { loadPosts } = usePost();
   useEffect(() => {
     getToken();
-  }, [getToken]);
+    loadPosts();
+  }, [getToken, loadPosts]);
 
   return (
     <>
-      <ThemeProvider theme={mainStyleColors}>
-        {isLoading && <Loading />}
-        {showModal && <Modal isError={isError} text={text} />}
-        <Layout />
-      </ThemeProvider>
+      {isLoading && <Loading />}
+      {showModal && <Modal isError={isError} text={text} />}
+      <Layout />
     </>
   );
 };

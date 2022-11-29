@@ -6,7 +6,7 @@ export const NavbarStyled = styled.ul`
   .icon-navbar {
     width: 40px;
     height: 40px;
-    margin: 0 3rem;
+    margin: 0 2rem;
     display: flex;
     gap: 3;
     &:hover {
