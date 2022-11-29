@@ -11,9 +11,11 @@ import { InitialEntry } from "@remix-run/router";
 import { ThemeProvider } from "styled-components";
 import { userReducer } from "../redux/features/userSlice/userSlice";
 import { UserState } from "../redux/features/userSlice/types";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { postsReducer } from "../redux/features/postSlice/postSlice";
-const initialUiState: UiState = {
+import { PostsState } from "../redux/features/postSlice/types";
+
+export const initialUiState: UiState = {
   modal: {
     text: "",
     showModal: false,
@@ -21,11 +23,15 @@ const initialUiState: UiState = {
   },
   isLoading: false,
 };
-const initialState: UserState = {
+export const initialState: UserState = {
   id: "",
   token: "",
   username: "",
   isLogged: false,
+};
+
+export const initialPostState: PostsState = {
+  post: [],
 };
 
 export const mockInitialStore: typeof store = configureStore({
@@ -38,6 +44,7 @@ export const mockInitialStore: typeof store = configureStore({
   preloadedState: {
     ui: initialUiState,
     user: initialState,
+    post: initialPostState,
   },
 });
 
@@ -55,13 +62,18 @@ const Router = ({
   children,
   initialEntries,
 }: ExtendedPropsWithChildren): JSX.Element => {
-  return <BrowserRouter>{children}</BrowserRouter>;
+  return initialEntries ? (
+    <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>
+  ) : (
+    <BrowserRouter>{children}</BrowserRouter>
+  );
 };
 
 const renderWithProviders = (
   ui: React.ReactElement,
   {
     preloadedState,
+    initialEntries,
     store = configureStore({
       reducer: {
         ui: uiReducer,
@@ -76,7 +88,7 @@ const renderWithProviders = (
   const Wrapper = ({ children }: PropsWithChildren<{}>): JSX.Element => {
     return (
       <>
-        <Router>
+        <Router initialEntries={initialEntries}>
           <Provider store={store}>
             <ThemeProvider theme={mainStyleColors}>
               <GlobalStyle />

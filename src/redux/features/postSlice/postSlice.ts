@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Post, PostsState } from "./types";
 
-const initialState: PostsState = {
+const initialPostState: PostsState = {
   post: [],
 };
 
 const postSlice = createSlice({
   name: "Post",
-  initialState,
+  initialState: initialPostState,
   reducers: {
     loadPost: (currentState, action: PayloadAction<Post[]>) => ({
       ...currentState,
