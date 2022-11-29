@@ -42,7 +42,7 @@ const useUser = () => {
     try {
       dispatch(showLoadingActionCreator());
       const response = await axios.post(`${urlApi}/users/login`, userData);
-      const token = await response.data;
+      const { token } = await response.data;
 
       const tokenPayload: JwtPayloadCustom = decodeToken(token);
 
@@ -54,10 +54,12 @@ const useUser = () => {
 
       dispatch(loginUserActionCreator(loggedUser));
       dispatch(hiddenLoadingActionCreator());
-      showModalActionCreator({
-        isError: false,
-        text: "Sesion iniciada",
-      });
+      dispatch(
+        showModalActionCreator({
+          isError: false,
+          text: "Sesion iniciada",
+        })
+      );
       window.localStorage.setItem("token", token);
       return true;
     } catch (error: unknown) {
