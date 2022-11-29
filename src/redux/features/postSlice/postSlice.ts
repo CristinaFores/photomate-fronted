@@ -1,26 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Post, PostsState } from "./types";
 
-interface Post {
-  id: string;
-  owner: string;
-  user: string;
-  title: string;
-  description: string;
-  location: string;
-  image?: [];
-  date?: Date;
-  tags?: [];
-  like?: [];
-}
-
-export interface PostState {
-  posts: Post[];
-  post: Post;
-}
-
-const initialState: PostState = {
-  posts: [],
-  post: {} as Post,
+const initialState: PostsState = {
+  post: [],
 };
 
 const postSlice = createSlice({
@@ -34,4 +16,5 @@ const postSlice = createSlice({
   },
 });
 
+export const { loadPost: loadPostActionCreator } = postSlice.actions;
 export const postsReducer = postSlice.reducer;

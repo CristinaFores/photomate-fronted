@@ -1,16 +1,15 @@
-interface Post {
+export interface Post {
   id: string;
-  user: string;
+  owner: string;
   title: string;
   description: string;
-  location: string;
+  location?: string;
   image?: [];
   date?: string;
   tags?: [];
   like?: [];
 }
 
-export interface PostState {
-  posts: Post[];
-  post: Post;
+export interface PostsState {
+  post: Post[];
 }
