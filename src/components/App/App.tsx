@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import usePost from "../../hooks/usePost/usePost";
+
 import useToken from "../../hooks/useToken/useToken";
 import { useAppSelector } from "../../redux/hooks";
 import Layout from "../Layout/Layout";
@@ -13,11 +13,8 @@ const App = () => {
   } = useAppSelector((state) => state.ui);
 
   const { getToken } = useToken();
-  const { loadPosts } = usePost();
-  useEffect(() => {
-    getToken();
-    loadPosts();
-  }, [getToken, loadPosts]);
+
+  useEffect(() => {}, [getToken]);
 
   return (
     <>
