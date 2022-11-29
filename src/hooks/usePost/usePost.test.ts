@@ -2,10 +2,11 @@ import { renderHook } from "@testing-library/react";
 import axios from "axios";
 import ProviderWrapper from "../../mocks/ProwiderWrapper";
 import { mockInitialStore } from "../../mocks/storeMock";
-
 import { showLoadingActionCreator } from "../../redux/features/uiSlice/uiSlice";
 import usePost from "./usePost";
 
+jest.mock("axios");
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 beforeEach(() => {
   jest.clearAllMocks();
 });
@@ -23,8 +24,6 @@ describe("Given the custom hook usePost", () => {
         wrapper: ProviderWrapper,
       });
 
-      jest.mock("axios");
-      const mockedAxios = axios as jest.Mocked<typeof axios>;
       mockedAxios.get.mockResolvedValueOnce(undefined);
       await loadPosts();
 
