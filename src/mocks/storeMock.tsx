@@ -12,6 +12,7 @@ import { ThemeProvider } from "styled-components";
 import { userReducer } from "../redux/features/userSlice/userSlice";
 import { UserState } from "../redux/features/userSlice/types";
 import { BrowserRouter } from "react-router-dom";
+import { postsReducer } from "../redux/features/postSlice/postSlice";
 const initialUiState: UiState = {
   modal: {
     text: "",
@@ -31,6 +32,7 @@ export const mockInitialStore: typeof store = configureStore({
   reducer: {
     ui: uiReducer,
     user: userReducer,
+    post: postsReducer,
   },
 
   preloadedState: {
@@ -64,6 +66,7 @@ const renderWithProviders = (
       reducer: {
         ui: uiReducer,
         user: userReducer,
+        post: postsReducer,
       },
       preloadedState,
     }),
