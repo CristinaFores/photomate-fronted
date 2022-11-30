@@ -20,10 +20,11 @@ const usePost = () => {
       const response = await axios.get(`${urlApi}/posts`, {
         headers: {
           Authorization: "Bearer " + token,
+          "Content-type": "text/plain",
         },
       });
 
-      const apiResponse = response.data;
+      const apiResponse = await response.data;
 
       dispatch(loadPostActionCreator(apiResponse));
     } catch (error: unknown) {
