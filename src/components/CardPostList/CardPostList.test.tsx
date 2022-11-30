@@ -5,7 +5,7 @@ import CardPostList from "./CardPostList";
 describe("Given component CardPostList", () => {
   describe("When it render", () => {
     test("Then its should show card with titles:'Cristina' and button 'Leer más'", () => {
-      renderWithProviders(<CardPostList />);
+      renderWithProviders(<CardPostList owner={"Cristina"} title={""} />);
 
       const titleUser = screen.getByRole("heading", {
         name: "Cristina",

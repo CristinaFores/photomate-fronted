@@ -14,13 +14,27 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import Button from "../Button/Button";
 
-const CardPostList = (): JSX.Element => {
+interface CardPostListProps {
+  owner: string;
+  title: string;
+  image?: [];
+  date?: string;
+  tags?: [];
+  like?: [];
+}
+
+const CardPostList = ({
+  owner,
+  title,
+  image,
+  date,
+}: CardPostListProps): JSX.Element => {
   return (
     <CardPostListStyled>
       <ProfileIconStyled>
         <div>
           <FontAwesomeIcon className="icon-profile" icon={faCircleUser} />
-          <h3>Cristina</h3>
+          <h3>{owner}</h3>
         </div>
 
         <ContainIconEditStyled>
@@ -33,11 +47,11 @@ const CardPostList = (): JSX.Element => {
         </ContainIconEditStyled>
       </ProfileIconStyled>
 
-      <ImgStyled src="../../../img/algo-salio-mal.png" alt="" />
+      <ImgStyled {...image} src="../../../img/algo-salio-mal.png" alt="" />
 
       <TitelPostyled>
-        <span>30/11/2022</span>
-        <h3>Que guay es el bootcamp</h3>
+        <span>{date}</span>
+        <h3>{title}</h3>
       </TitelPostyled>
 
       <ContainButtonStyled>
