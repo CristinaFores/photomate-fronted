@@ -1,7 +1,6 @@
 import renderWithProviders from "../../mocks/storeMock";
 import { screen } from "@testing-library/react";
 import ListPostsHome from "./ListPostsHome";
-import CardPostList from "../CardPostList/CardPostList";
 
 describe("Given component ListPostsHome", () => {
   describe("When it render", () => {
