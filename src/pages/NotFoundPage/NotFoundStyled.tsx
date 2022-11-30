@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NotFoundPageStyled = styled.main`
+export const NotFoundPageStyled = styled.div`
   display: flex;
   overflow-x: hidden;
   margin: 0 auto;

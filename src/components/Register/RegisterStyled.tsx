@@ -5,11 +5,6 @@ export const FormStyled = styled.form`
   padding-right: 2.62rem;
   margin: 5px;
 
-  @media (min-width: 1000px) {
-    padding-left: 5.25rem;
-    padding-right: 5.25rem;
-  }
-
   padding-top: 2.625rem;
   padding-bottom: 2.625rem;
   list-style: none;
