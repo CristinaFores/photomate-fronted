@@ -31,7 +31,7 @@ export const initialState: UserState = {
 };
 
 export const initialPostState: PostsState = {
-  post: [],
+  posts: [],
 };
 
 export const mockInitialStore: typeof store = configureStore({
