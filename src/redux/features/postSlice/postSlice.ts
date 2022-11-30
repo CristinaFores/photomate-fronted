@@ -3,6 +3,17 @@ import { Post, PostsState } from "./types";
 
 const initialPostState: PostsState = {
   posts: [],
+  post: {
+    id: "",
+    owner: "",
+    title: "",
+    description: "",
+    location: "",
+    image: [],
+    date: "",
+    tags: [],
+    like: [],
+  },
 };
 
 const postSlice = createSlice({
@@ -13,8 +24,15 @@ const postSlice = createSlice({
       ...currentState,
       posts: action.payload,
     }),
+    loadOnePost: (currentState, action: PayloadAction<Post>) => ({
+      ...currentState,
+      post: action.payload,
+    }),
   },
 });
 
-export const { loadPost: loadPostActionCreator } = postSlice.actions;
+export const {
+  loadPost: loadPostActionCreator,
+  loadOnePost: loadOnePostActionCreator,
+} = postSlice.actions;
 export const postsReducer = postSlice.reducer;

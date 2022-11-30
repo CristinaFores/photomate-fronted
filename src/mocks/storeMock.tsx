@@ -32,6 +32,12 @@ export const initialState: UserState = {
 
 export const initialPostState: PostsState = {
   posts: [],
+  post: {
+    id: "1",
+    owner: "1",
+    title: "new post",
+    description: "",
+  },
 };
 
 export const mockInitialStore: typeof store = configureStore({
