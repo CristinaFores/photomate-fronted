@@ -1,4 +1,8 @@
-import { loadPostActionCreator, postsReducer } from "./postSlice";
+import {
+  loadOnePostActionCreator,
+  loadPostActionCreator,
+  postsReducer,
+} from "./postSlice";
 import { PostsState } from "./types";
 
 describe("Given postSlice", () => {
@@ -15,9 +19,11 @@ describe("Given postSlice", () => {
 
       const initialState: PostsState = {
         posts: [],
+        post: posts[1],
       };
       const expectedState: PostsState = {
         posts: posts,
+        post: posts[1],
       };
 
       const expectLoadpost = postsReducer(
@@ -25,6 +31,34 @@ describe("Given postSlice", () => {
         loadPostActionCreator(expectedState.posts)
       );
       expect(posts).toStrictEqual(expectLoadpost.posts);
+    });
+
+    describe("When it recives a action creator loadPost", () => {
+      test("Then it should return a new state the posts", () => {
+        const posts = [
+          {
+            id: "1",
+            owner: "1",
+            title: "new post",
+            description: "",
+          },
+        ];
+
+        const initialState: PostsState = {
+          posts: [],
+          post: posts[1],
+        };
+        const expectedState: PostsState = {
+          posts: posts,
+          post: posts[1],
+        };
+
+        const expectLoadpost = postsReducer(
+          initialState,
+          loadOnePostActionCreator(expectedState.post)
+        );
+        expect(posts[1]).toStrictEqual(expectLoadpost.post);
+      });
     });
   });
 });
