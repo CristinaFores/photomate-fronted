@@ -28,7 +28,17 @@ export const handlers = [
     return res(ctx.status(200), ctx.json({ token: "kitten" }));
   }),
 
-  rest.get(`${url}/posts`, (req, res, ctx) =>
-    res(ctx.status(200), ctx.json([{}]))
-  ),
+  rest.get(`${url}/posts`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([
+        {
+          id: "1",
+          owner: "1",
+          title: "new post",
+          description: "",
+        },
+      ])
+    );
+  }),
 ];

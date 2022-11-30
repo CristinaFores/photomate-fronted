@@ -6,7 +6,7 @@ const initialPostState: PostsState = {
 };
 
 const postSlice = createSlice({
-  name: "Post",
+  name: "post",
   initialState: initialPostState,
   reducers: {
     loadPost: (currentState, action: PayloadAction<Post[]>) => ({
