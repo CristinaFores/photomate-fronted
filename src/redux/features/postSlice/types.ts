@@ -11,5 +11,5 @@ export interface Post {
 }
 
 export interface PostsState {
-  post: Post[];
+  posts: Post[];
 }

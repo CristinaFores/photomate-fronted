@@ -14,17 +14,17 @@ describe("Given postSlice", () => {
       ];
 
       const initialState: PostsState = {
-        post: [],
+        posts: [],
       };
       const expectedState: PostsState = {
-        post: posts,
+        posts: posts,
       };
 
       const expectLoadpost = postsReducer(
         initialState,
-        loadPostActionCreator(expectedState.post)
+        loadPostActionCreator(expectedState.posts)
       );
-      expect(initialState.post).toStrictEqual(expectLoadpost.post);
+      expect(posts).toStrictEqual(expectLoadpost.posts);
     });
   });
 });

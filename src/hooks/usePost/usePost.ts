@@ -26,7 +26,7 @@ const usePost = () => {
 
       const apiResponse = await response.data;
 
-      dispatch(loadPostActionCreator(apiResponse));
+      dispatch(loadPostActionCreator(apiResponse.posts));
     } catch (error: unknown) {
       dispatch(
         showModalActionCreator({
