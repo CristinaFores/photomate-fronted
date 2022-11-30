@@ -29,7 +29,6 @@ export const ProfileIconStyled = styled.div`
   h3 {
     font-size: 1rem;
   }
-
   div {
     display: flex;
     align-items: center;
