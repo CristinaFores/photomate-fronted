@@ -1,22 +1,28 @@
 import { useEffect } from "react";
 import usePost from "../../hooks/usePost/usePost";
+import { useAppSelector } from "../../redux/hooks";
 import CardPostList from "../CardPostList/CardPostList";
+import { ListPostsHomeStyled } from "./ListPostsHomeStyled";
 
 const ListPostsHome = (): JSX.Element => {
   const { loadPosts } = usePost();
-
+  const { posts } = useAppSelector((state) => state.post);
   useEffect(() => {
     loadPosts();
   }, [loadPosts]);
 
   return (
-    <ul>
-      <CardPostList
-        owner={"Cristina"}
-        date={"30/1172022"}
-        title="Como mola el bootcamp"
-      />
-    </ul>
+    <ListPostsHomeStyled>
+      {posts?.map((post, index) => (
+        <CardPostList
+          owner={"cris"}
+          title={post.title}
+          date={post.date}
+          image={post.image}
+          key={post.id}
+        />
+      ))}
+    </ListPostsHomeStyled>
   );
 };
 
