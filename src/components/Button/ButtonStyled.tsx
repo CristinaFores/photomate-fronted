@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 interface ButtonStyledProps {
-  styleType: "small" | "big";
+  styleType: "small" | "big" | "smallest";
 }
 
 const smallButton = css`
@@ -9,6 +9,19 @@ const smallButton = css`
 `;
 const bigButton = css`
   width: 100%;
+`;
+
+const smallestButton = css`
+  width: 4rem;
+  font-size: 1rem;
+  height: 40px;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 6px;
+  background-color: rgb(24, 119, 242);
+  width: 5rem;
+  font-size: 1rem;
 `;
 const ButtonStyled = styled.button<ButtonStyledProps>`
   font-family: inherit;
@@ -30,6 +43,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   }
   ${({ styleType }) => styleType === "small" && smallButton}
   ${({ styleType }) => styleType === "big" && bigButton}
+    ${({ styleType }) => styleType === "smallest" && smallestButton}
 `;
 
 export default ButtonStyled;
