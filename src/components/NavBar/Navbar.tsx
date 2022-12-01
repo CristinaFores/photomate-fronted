@@ -13,7 +13,7 @@ const Navbar = (): JSX.Element => {
         </NavLink>
       </li>
       <li>
-        <NavLink to={"/login"} aria-label="Inicio">
+        <NavLink to={"/home"} aria-label="Inicio">
           <FontAwesomeIcon className="icon-navbar" icon={faHouse} />
         </NavLink>
       </li>

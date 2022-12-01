@@ -17,7 +17,7 @@ import Button from "../Button/Button";
 interface CardPostListProps {
   owner: string;
   title: string;
-  image?: [];
+  imagePaths: string[];
   date?: string;
   tags?: [];
   like?: [];
@@ -26,7 +26,7 @@ interface CardPostListProps {
 const CardPostList = ({
   owner,
   title,
-  image,
+  imagePaths,
   date,
 }: CardPostListProps): JSX.Element => {
   return (
@@ -46,8 +46,9 @@ const CardPostList = ({
           </button>
         </ContainIconEditStyled>
       </ProfileIconStyled>
-
-      <ImgStyled {...image} src="../../../img/algo-salio-mal.png" alt="" />
+      {imagePaths.map((img) => (
+        <ImgStyled src={img} alt="imagenes de la publicacion" />
+      ))}
 
       <TitelPostyled>
         <span>{date}</span>

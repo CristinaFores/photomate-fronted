@@ -3,17 +3,18 @@ import {
   loadPostActionCreator,
   postsReducer,
 } from "./postSlice";
-import { PostsState } from "./types";
+import { Post, PostsState } from "./types";
 
 describe("Given postSlice", () => {
   describe("When it recives a action creator loadPost", () => {
     test("Then it should return a new state the posts", () => {
-      const posts = [
+      const posts: Post[] = [
         {
           id: "1",
           owner: "1",
           title: "new post",
           description: "",
+          imagePaths: [],
         },
       ];
 
@@ -35,12 +36,13 @@ describe("Given postSlice", () => {
 
     describe("When it recives a action creator loadPost", () => {
       test("Then it should return a new state the posts", () => {
-        const posts = [
+        const posts: Post[] = [
           {
             id: "1",
             owner: "1",
             title: "new post",
             description: "",
+            imagePaths: [],
           },
         ];
 

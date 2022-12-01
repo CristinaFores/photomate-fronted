@@ -7,6 +7,7 @@ import { ListPostsHomeStyled } from "./ListPostsHomeStyled";
 const ListPostsHome = (): JSX.Element => {
   const { loadPosts } = usePost();
   const { posts } = useAppSelector((state) => state.post);
+
   useEffect(() => {
     loadPosts();
   }, [loadPosts]);
@@ -18,8 +19,7 @@ const ListPostsHome = (): JSX.Element => {
           owner={"cris"}
           title={post.title}
           date={post.date}
-          image={post.image}
-          key={post.id}
+          imagePaths={post.imagePaths}
         />
       ))}
     </ListPostsHomeStyled>
