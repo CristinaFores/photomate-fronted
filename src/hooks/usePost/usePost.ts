@@ -1,18 +1,21 @@
 import axios from "axios";
 import { useCallback } from "react";
-import {} from "react-redux";
-import { loadPostActionCreator } from "../../redux/features/postSlice/postSlice";
+import {
+  loadOnePostActionCreator,
+  loadPostActionCreator,
+} from "../../redux/features/postSlice/postSlice";
+import { Post } from "../../redux/features/postSlice/types";
 import {
   hiddenLoadingActionCreator,
   showLoadingActionCreator,
   showModalActionCreator,
 } from "../../redux/features/uiSlice/uiSlice";
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 const usePost = () => {
   const urlApi = process.env.REACT_APP_API_URL;
   const dispatch = useAppDispatch();
-  const token = localStorage.getItem("token");
+  const { token } = useAppSelector((state) => state.user);
 
   const loadPosts = useCallback(async () => {
     try {
@@ -26,7 +29,7 @@ const usePost = () => {
 
       const apiResponse = await response.data;
 
-      dispatch(loadPostActionCreator(apiResponse.posts));
+      dispatch(loadPostActionCreator(apiResponse));
     } catch (error: unknown) {
       dispatch(
         showModalActionCreator({
@@ -39,7 +42,34 @@ const usePost = () => {
     }
   }, [dispatch, token, urlApi]);
 
-  return { loadPosts };
+  const getPostById = useCallback(
+    async (id: string) => {
+      dispatch(showLoadingActionCreator());
+
+      try {
+        const { data } = await axios.get<Post>(`${urlApi}/posts/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        dispatch(loadOnePostActionCreator(data));
+        dispatch(hiddenLoadingActionCreator());
+      } catch {
+        dispatch(hiddenLoadingActionCreator());
+
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            text: "No se puede cargar la publicacion",
+          })
+        );
+      }
+    },
+    [dispatch, token, urlApi]
+  );
+
+  return { loadPosts, getPostById };
 };
 
 export default usePost;

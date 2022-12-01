@@ -60,7 +60,7 @@ const useUser = () => {
           text: "Sesion iniciada",
         })
       );
-      window.localStorage.setItem("token", token);
+      localStorage.setItem("token", token);
       navigate("/home");
     } catch (error: unknown) {
       dispatch(

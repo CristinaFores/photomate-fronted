@@ -1,11 +1,17 @@
 import { renderHook } from "@testing-library/react";
 import axios from "axios";
+import { currentPostMock } from "../../mocks/handlers";
 import ProviderWrapper from "../../mocks/ProwiderWrapper";
 import { mockInitialStore } from "../../mocks/storeMock";
-import { showLoadingActionCreator } from "../../redux/features/uiSlice/uiSlice";
+import { loadOnePostActionCreator } from "../../redux/features/postSlice/postSlice";
+import {
+  hiddenLoadingActionCreator,
+  showLoadingActionCreator,
+} from "../../redux/features/uiSlice/uiSlice";
+import { store } from "../../redux/store";
 import usePost from "./usePost";
 
-beforeEach(() => {
+afterEach(() => {
   jest.clearAllMocks();
 });
 
@@ -30,8 +36,36 @@ describe("Given the custom hook usePos", () => {
 });
 
 describe("Given the custom hook usePost", () => {
-  describe("When it's methodt loadPost is invoked", () => {
-    test("Then dispatch should be called", async () => {
+  describe("When it's methodt getPostById invoked", () => {
+    test("Then its should called the dispatch resolve", async () => {
+      const {
+        result: {
+          current: { getPostById },
+        },
+      } = renderHook(() => usePost(), {
+        wrapper: ProviderWrapper,
+      });
+
+      await getPostById(currentPostMock.id);
+
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        1,
+        showLoadingActionCreator()
+      );
+
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        2,
+        loadOnePostActionCreator(currentPostMock)
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        3,
+        hiddenLoadingActionCreator()
+      );
+    });
+  });
+
+  describe("When it's methodt loadPost invoked", () => {
+    test("Then its should dispatch should be called", async () => {
       const {
         result: {
           current: { loadPosts },
@@ -44,6 +78,23 @@ describe("Given the custom hook usePost", () => {
       await loadPosts();
 
       expect(dispatchSpy).toHaveBeenCalledWith(showLoadingActionCreator());
+    });
+
+    describe("When it's methodt getPostByID invoked", () => {
+      test("Then its should dispatch should be called", async () => {
+        const {
+          result: {
+            current: { getPostById },
+          },
+        } = renderHook(() => usePost(), {
+          wrapper: ProviderWrapper,
+        });
+
+        axios.get = jest.fn().mockRejectedValue(new Error());
+        await getPostById(currentPostMock.id);
+
+        expect(dispatchSpy).toHaveBeenCalledWith(showLoadingActionCreator());
+      });
     });
   });
 });
