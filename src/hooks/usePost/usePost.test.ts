@@ -8,7 +8,7 @@ import {
   hiddenLoadingActionCreator,
   showLoadingActionCreator,
 } from "../../redux/features/uiSlice/uiSlice";
-import { store } from "../../redux/store";
+
 import usePost from "./usePost";
 
 afterEach(() => {
