@@ -7,7 +7,7 @@ import {
   ProfileIconDetailStyled,
 } from "./CardPostDetailStyled";
 
-interface CardDetailPostProps {
+interface CardPostDetailsProps {
   owner: string;
   title: string;
   description: string;
@@ -18,13 +18,13 @@ interface CardDetailPostProps {
   like?: [];
 }
 
-const CardDetailPost = ({
+const CardPostDetails = ({
   owner,
   title,
   image,
   date,
   description,
-}: CardDetailPostProps): JSX.Element => {
+}: CardPostDetailsProps): JSX.Element => {
   return (
     <>
       <CardDetailPostStyled>
@@ -48,4 +48,4 @@ const CardDetailPost = ({
   );
 };
 
-export default CardDetailPost;
+export default CardPostDetails;
