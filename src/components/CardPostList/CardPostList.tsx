@@ -17,7 +17,7 @@ import Button from "../Button/Button";
 interface CardPostListProps {
   owner: string;
   title: string;
-  imagePaths?: [];
+  imagePaths: string[];
   date?: string;
   tags?: [];
   like?: [];
@@ -46,8 +46,9 @@ const CardPostList = ({
           </button>
         </ContainIconEditStyled>
       </ProfileIconStyled>
-
-      <ImgStyled src={imagePaths?.map((img) => img).join(",")} alt="" />
+      {imagePaths.map((img) => (
+        <ImgStyled src={img} alt="imagenes de la publicacion" />
+      ))}
 
       <TitelPostyled>
         <span>{date}</span>

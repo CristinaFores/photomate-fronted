@@ -37,6 +37,7 @@ export const initialPostState: PostsState = {
     owner: "1",
     title: "new post",
     description: "",
+    imagePaths: [],
   },
 };
 

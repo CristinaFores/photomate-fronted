@@ -22,7 +22,7 @@ const postSlice = createSlice({
   reducers: {
     loadPost: (currentState, action: PayloadAction<Post[]>) => ({
       ...currentState,
-      posts: action.payload,
+      posts: [...action.payload],
     }),
     loadOnePost: (currentState, action: PayloadAction<Post>) => ({
       ...currentState,
