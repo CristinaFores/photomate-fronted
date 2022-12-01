@@ -5,12 +5,12 @@ import CardPostList from "../CardPostList/CardPostList";
 import { ListPostsHomeStyled } from "./ListPostsHomeStyled";
 
 const ListPostsHome = (): JSX.Element => {
-  const { loadPosts, getPostById } = usePost();
+  const { loadPosts } = usePost();
   const { posts } = useAppSelector((state) => state.post);
 
   useEffect(() => {
     loadPosts();
-  }, [getPostById, loadPosts]);
+  }, [loadPosts]);
 
   return (
     <ListPostsHomeStyled>
