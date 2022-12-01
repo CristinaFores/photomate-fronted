@@ -1,8 +1,17 @@
 // src/mocks/handlers.js
 import { rest } from "msw";
 import { RegisterData, UserCredentials } from "../hooks/useUser/types";
+import { Post } from "../redux/features/postSlice/types";
 
 const url = process.env.REACT_APP_API_URL;
+
+export const currentPostMock: Post = {
+  id: "123456",
+  owner: "123456",
+  title: "new post",
+  description: "",
+  imagePaths: [],
+};
 
 export const handlers = [
   rest.post(`${url}/users/register`, async (req, res, ctx) => {
@@ -33,12 +42,17 @@ export const handlers = [
       ctx.status(200),
       ctx.json([
         {
-          id: "1",
-          owner: "1",
+          id: "123456",
+          owner: "123456",
           title: "new post",
           description: "",
+          imagePaths: [],
         },
       ])
     );
+  }),
+
+  rest.get(`${url}/posts/${currentPostMock.id}`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(currentPostMock));
   }),
 ];
