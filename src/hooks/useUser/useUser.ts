@@ -61,7 +61,7 @@ const useUser = () => {
         })
       );
       window.localStorage.setItem("token", token);
-      return true;
+      navigate("/home");
     } catch (error: unknown) {
       dispatch(
         showModalActionCreator({

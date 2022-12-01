@@ -9,7 +9,7 @@ const initialPostState: PostsState = {
     title: "",
     description: "",
     location: "",
-    image: [],
+    imagePaths: [],
     date: "",
     tags: [],
     like: [],

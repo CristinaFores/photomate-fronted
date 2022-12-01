@@ -5,11 +5,12 @@ import CardPostList from "../CardPostList/CardPostList";
 import { ListPostsHomeStyled } from "./ListPostsHomeStyled";
 
 const ListPostsHome = (): JSX.Element => {
-  const { loadPosts } = usePost();
+  const { loadPosts, getPostById } = usePost();
   const { posts } = useAppSelector((state) => state.post);
+
   useEffect(() => {
     loadPosts();
-  }, [loadPosts]);
+  }, [getPostById, loadPosts]);
 
   return (
     <ListPostsHomeStyled>
@@ -18,8 +19,7 @@ const ListPostsHome = (): JSX.Element => {
           owner={"cris"}
           title={post.title}
           date={post.date}
-          image={post.image}
-          key={post.id}
+          imagePaths={post.imagePaths}
         />
       ))}
     </ListPostsHomeStyled>

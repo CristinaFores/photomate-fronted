@@ -4,7 +4,7 @@ export interface Post {
   title: string;
   description: string;
   location?: string;
-  image?: [];
+  imagePaths?: [];
   date?: string;
   tags?: [];
   like?: [];
