@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CardPostListStyled = styled.div`
+export const CardPostListStyled = styled.li`
   display: flex;
   flex-direction: column;
   height: 400px;
