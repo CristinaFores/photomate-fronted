@@ -21,6 +21,7 @@ const ListPosts = (): JSX.Element => {
           date={post.date}
           imagePaths={post.imagePaths}
           key={post.id}
+          id={post.id}
         />
       ))}
     </ListPostsStyled>
