@@ -7,7 +7,7 @@ const url = process.env.REACT_APP_API_URL;
 
 export const currentPostMock: Post = {
   id: "123456",
-  owner: "123456",
+  owner: { username: "" },
   title: "new post",
   description: "",
   imagePaths: [],

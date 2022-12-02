@@ -11,7 +11,7 @@ describe("Given postSlice", () => {
       const posts: Post[] = [
         {
           id: "1",
-          owner: "1",
+          owner: { username: "" },
           title: "new post",
           description: "",
           imagePaths: [],
@@ -39,7 +39,7 @@ describe("Given postSlice", () => {
         const posts: Post[] = [
           {
             id: "1",
-            owner: "1",
+            owner: { username: "" },
             title: "new post",
             description: "",
             imagePaths: [],
