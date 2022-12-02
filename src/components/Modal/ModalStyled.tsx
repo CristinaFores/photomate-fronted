@@ -24,8 +24,8 @@ export const ModalStyled = styled.div`
   background-color: ${(props) => props.theme.colors.primary.light};
   z-index: 1;
   .circle {
-    font-size: 1rem;
-    font-size: 1rem;
+    font-size: 2rem;
+
     color: ${(props) => props.theme.colors.primary.base};
     &:focus,
     &:hover {

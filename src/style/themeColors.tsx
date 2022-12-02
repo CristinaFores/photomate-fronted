@@ -3,14 +3,14 @@ import { DefaultTheme } from "styled-components";
 const mainStyleColors: DefaultTheme = {
   colors: {
     primary: {
-      base: "#aea9a9",
+      base: "#666666",
       dark: "#000",
       light: "#fff",
     },
     button: {
-      active: "rgb(24, 119, 242)",
+      active: "#006cfa",
       hover: "#000",
-      disable: "rgba(24, 119, 242, 0.36)",
+      disable: "rgba(24, 118, 242, 0.501)",
     },
   },
   padding: {
