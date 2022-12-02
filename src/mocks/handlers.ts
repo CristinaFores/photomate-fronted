@@ -55,4 +55,10 @@ export const handlers = [
   rest.get(`${url}/posts/${currentPostMock.id}`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(currentPostMock));
   }),
+  rest.get(
+    `https://cristina-fores-final-project-202209.onrender.com/posts/undefined`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(currentPostMock));
+    }
+  ),
 ];
