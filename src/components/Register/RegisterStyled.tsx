@@ -23,7 +23,7 @@ export const FormStyled = styled.form`
   }
 `;
 
-export const TextSpanStyled = styled.li`
+export const TextSpanStyled = styled.span`
   color: ${(props) => props.theme.colors.primary.base};
   font-weight: 600;
   text-align: center;
