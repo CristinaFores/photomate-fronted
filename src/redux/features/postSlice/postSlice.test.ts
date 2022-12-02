@@ -1,4 +1,5 @@
 import {
+  deletePostActionCreator,
   loadOnePostActionCreator,
   loadPostActionCreator,
   postsReducer,
@@ -60,6 +61,42 @@ describe("Given postSlice", () => {
           loadOnePostActionCreator(expectedState.post)
         );
         expect(posts[1]).toStrictEqual(expectLoadpost.post);
+      });
+    });
+
+    describe("When the deletePostActionCreator is invoked with a correct id", () => {
+      test("Then it should return a new state with a list the posts", () => {
+        const posts: PostsState = {
+          posts: [
+            {
+              id: "1",
+              owner: { username: "" },
+              title: "new post",
+              description: "",
+              imagePaths: [],
+            },
+          ],
+          post: {
+            id: "1",
+            owner: { username: "" },
+            title: "new post",
+            description: "",
+            imagePaths: [],
+          },
+        };
+        const currentState = posts;
+
+        const expectedPostState = {
+          ...currentState,
+          posts: currentState.posts.slice(0, 0),
+        };
+
+        const newState = postsReducer(
+          currentState,
+          deletePostActionCreator(currentState.posts[0].id)
+        );
+
+        expect(newState).toStrictEqual(expectedPostState);
       });
     });
   });
