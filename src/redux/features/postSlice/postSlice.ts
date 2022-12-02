@@ -28,11 +28,16 @@ const postSlice = createSlice({
       ...currentState,
       post: action.payload,
     }),
+    deletePost: (currentState: PostsState, action: PayloadAction<string>) => ({
+      ...currentState,
+      posts: currentState.posts.filter((post) => post.id !== action.payload),
+    }),
   },
 });
 
 export const {
   loadPost: loadPostActionCreator,
   loadOnePost: loadOnePostActionCreator,
+  deletePost: deletePostActionCreator,
 } = postSlice.actions;
 export const postsReducer = postSlice.reducer;
