@@ -11,7 +11,7 @@ const ListPosts = (): JSX.Element => {
   useEffect(() => {
     loadPosts();
   }, [loadPosts]);
-  console.log(posts);
+
   return (
     <ListPostsStyled>
       {posts.map((post, index) => (
