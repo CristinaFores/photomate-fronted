@@ -10,24 +10,24 @@ import {
   showLoadingActionCreator,
   showModalActionCreator,
 } from "../../redux/features/uiSlice/uiSlice";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch } from "../../redux/hooks";
 
 const usePost = () => {
   const urlApi = process.env.REACT_APP_API_URL;
   const dispatch = useAppDispatch();
-  const { token } = useAppSelector((state) => state.user);
 
+  const token = localStorage.getItem("token");
   const loadPosts = useCallback(async () => {
     try {
       dispatch(showLoadingActionCreator());
-      const response = await axios.get(`${urlApi}/posts`, {
+      const { data } = await axios.get(`${urlApi}/posts`, {
         headers: {
           Authorization: "Bearer " + token,
           "Content-type": "text/plain",
         },
       });
 
-      const apiResponse = await response.data;
+      const apiResponse = await data.posts;
 
       dispatch(loadPostActionCreator(apiResponse));
     } catch (error: unknown) {
