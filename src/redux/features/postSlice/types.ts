@@ -1,6 +1,8 @@
 export interface Post {
   id: string;
-  owner: string;
+  owner: {
+    username: string;
+  };
   title: string;
   description: string;
   location?: string;

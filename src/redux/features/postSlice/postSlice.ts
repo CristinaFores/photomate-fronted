@@ -5,7 +5,7 @@ const initialPostState: PostsState = {
   posts: [],
   post: {
     id: "",
-    owner: "",
+    owner: { username: "" },
     title: "",
     description: "",
     location: "",

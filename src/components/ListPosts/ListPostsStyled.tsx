@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ListPostsHomeStyled = styled.ul`
+export const ListPostsStyled = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1rem;

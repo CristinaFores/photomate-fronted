@@ -1,5 +1,6 @@
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import {
   CardDetailPostStyled,
@@ -12,7 +13,7 @@ interface CardPostDetailsProps {
   title: string;
   description: string;
   location?: string;
-  image?: [];
+  imagePaths: string[];
   date?: string;
   tags?: [];
   like?: [];
@@ -21,10 +22,14 @@ interface CardPostDetailsProps {
 const CardPostDetails = ({
   owner,
   title,
-  image,
+  imagePaths,
   date,
   description,
 }: CardPostDetailsProps): JSX.Element => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/home`);
+  };
   return (
     <>
       <CardDetailPostStyled>
@@ -32,17 +37,22 @@ const CardPostDetails = ({
           <FontAwesomeIcon className="icon-profile" icon={faCircleUser} />
           <h3>{owner}</h3>
         </ProfileIconDetailStyled>
-        <img
-          src="../../../img/algo-salio-mal.png"
-          alt="imagen de la publicacion"
-        />
+
+        {imagePaths.map((img, index) => (
+          <img src={img} alt="imagenes de la publicacion" key={index} />
+        ))}
 
         <PostDetailStyled>
           <span>{date}</span>
           <h3>{title}</h3>
           <p>{description}</p>
         </PostDetailStyled>
-        <Button ariaLabel="volver" styleType={"smallest"} text="VOLVER" />
+        <Button
+          ariaLabel="volver"
+          styleType={"smallest"}
+          text="VOLVER"
+          action={handleClick}
+        />
       </CardDetailPostStyled>
     </>
   );

@@ -13,6 +13,7 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-regular-svg-icons";
 import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 
 interface CardPostListProps {
   owner: string;
@@ -21,6 +22,7 @@ interface CardPostListProps {
   date?: string;
   tags?: [];
   like?: [];
+  id: string;
 }
 
 const CardPostList = ({
@@ -28,7 +30,12 @@ const CardPostList = ({
   title,
   imagePaths,
   date,
+  id,
 }: CardPostListProps): JSX.Element => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/posts/${id}`);
+  };
   return (
     <CardPostListStyled>
       <ProfileIconStyled>
@@ -46,17 +53,21 @@ const CardPostList = ({
           </button>
         </ContainIconEditStyled>
       </ProfileIconStyled>
-      {imagePaths.map((img) => (
-        <ImgStyled src={img} alt="imagenes de la publicacion" />
+      {imagePaths.map((img, index) => (
+        <ImgStyled src={img} alt="imagenes de la publicacion" key={index} />
       ))}
-
       <TitelPostyled>
         <span>{date}</span>
         <h3>{title}</h3>
       </TitelPostyled>
 
       <ContainButtonStyled>
-        <Button ariaLabel={"Leer mas"} styleType="smallest" text="Leer más" />
+        <Button
+          ariaLabel={"Leer mas"}
+          styleType="smallest"
+          text="Leer más"
+          action={handleClick}
+        />
       </ContainButtonStyled>
     </CardPostListStyled>
   );

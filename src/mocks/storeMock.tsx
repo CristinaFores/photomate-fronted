@@ -34,10 +34,10 @@ export const initialPostState: PostsState = {
   posts: [],
   post: {
     id: "1",
-    owner: "1",
+    owner: { username: "" },
     title: "new post",
     description: "",
-    imagePaths: [],
+    imagePaths: [""],
   },
 };
 
