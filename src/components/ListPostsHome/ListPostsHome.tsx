@@ -14,7 +14,7 @@ const ListPostsHome = (): JSX.Element => {
 
   return (
     <ListPostsHomeStyled>
-      {posts?.map((post, index) => (
+      {posts.map((post, index) => (
         <CardPostList
           owner={"cris"}
           title={post.title}
