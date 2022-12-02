@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
+
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import Header from "../Header/Header";
-import ListPostsHome from "../ListPostsHome/ListPostsHome";
 
 import Logo from "../Logo/Logo";
 import Navbar from "../NavBar/Navbar";
@@ -15,18 +15,17 @@ const Layout = (): JSX.Element => {
       <Header
         children={
           <>
-            <Logo />
-            <Navbar />
+            <Logo /> <Navbar />
           </>
         }
       />
       <LayoutStyled>
         <Routes>
           <Route path="/" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+
           <Route path="/*" element={<NotFoundPage />} />
-          <Route path="/home" element={<ListPostsHome />} />
         </Routes>
       </LayoutStyled>
     </>
