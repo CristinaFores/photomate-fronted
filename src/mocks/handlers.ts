@@ -65,12 +65,12 @@ export const handlers = [
   rest.delete(
     `https://cristina-fores-final-project-202209.onrender.com/posts/6388c3df08d4c054bd2e59e9`,
     (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json({}));
+      return res(ctx.status(400), ctx.json({}));
     }
   ),
 
   rest.delete(
-    `https://cristina-fores-final-project-202209.onrender.com/posts/1234`,
+    `https://cristina-fores-final-project-202209.onrender.com/posts/12345`,
     (req, res, ctx) => {
       return res(ctx.status(200), ctx.json({}));
     }

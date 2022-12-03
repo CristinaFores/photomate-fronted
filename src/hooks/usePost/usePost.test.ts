@@ -64,6 +64,41 @@ describe("Given the custom hook usePost", () => {
     });
   });
 
+  describe("When its method deletePost is invoked with id", () => {
+    test("Then its should dispatch should be called", async () => {
+      const {
+        result: {
+          current: { deletePost },
+        },
+      } = renderHook(() => usePost(), {
+        wrapper: ProviderWrapper,
+      });
+
+      const id = "6388c3df08d4c054bd2e59e9";
+
+      await deletePost(id);
+
+      expect(dispatchSpy).toBeCalled();
+    });
+  });
+
+  describe("When its method deletePost is invoked with id incorrect", () => {
+    test("Then its should dispatch should be called", async () => {
+      const {
+        result: {
+          current: { deletePost },
+        },
+      } = renderHook(() => usePost(), {
+        wrapper: ProviderWrapper,
+      });
+
+      const id = "12345";
+
+      await deletePost(id);
+
+      expect(dispatchSpy).toBeCalled();
+    });
+  });
   describe("When it's methodt loadPost invoked", () => {
     test("Then its should dispatch should be called", async () => {
       const {
@@ -94,42 +129,6 @@ describe("Given the custom hook usePost", () => {
         await getPostById(currentPostMock.id);
 
         expect(dispatchSpy).toHaveBeenCalledWith(showLoadingActionCreator());
-      });
-    });
-
-    describe("When its method deletePost is invoked with id", () => {
-      test("Then its should dispatch should be called", async () => {
-        const {
-          result: {
-            current: { deletePost },
-          },
-        } = renderHook(() => usePost(), {
-          wrapper: ProviderWrapper,
-        });
-
-        const id = "1234";
-
-        await deletePost(id);
-
-        expect(dispatchSpy).toBeCalled();
-      });
-    });
-
-    describe("When its method deletePost is invoked with id incorrect", () => {
-      test("Then its should dispatch should be called", async () => {
-        const {
-          result: {
-            current: { deletePost },
-          },
-        } = renderHook(() => usePost(), {
-          wrapper: ProviderWrapper,
-        });
-
-        const id = "1234";
-
-        await deletePost(id);
-
-        expect(dispatchSpy).toHaveBeenCalled();
       });
     });
   });
