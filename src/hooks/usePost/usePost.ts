@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useCallback } from "react";
 import {
+  deletePostActionCreator,
   loadOnePostActionCreator,
   loadPostActionCreator,
 } from "../../redux/features/postSlice/postSlice";
@@ -28,17 +29,16 @@ const usePost = () => {
       });
 
       const apiResponse = await data.posts;
-
+      dispatch(hiddenLoadingActionCreator());
       dispatch(loadPostActionCreator(apiResponse));
     } catch (error: unknown) {
+      dispatch(hiddenLoadingActionCreator());
       dispatch(
         showModalActionCreator({
           isError: true,
           text: "No hay ningun post disponible",
         })
       );
-    } finally {
-      dispatch(hiddenLoadingActionCreator());
     }
   }, [dispatch, token, urlApi]);
 
@@ -69,7 +69,31 @@ const usePost = () => {
     [dispatch, token, urlApi]
   );
 
-  return { loadPosts, getPostById };
+  const deletePost = useCallback(
+    async (id: string) => {
+      try {
+        const { data } = await axios.delete<Post>(`${urlApi}/posts/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        dispatch(deletePostActionCreator(data.id));
+        showModalActionCreator({
+          isError: false,
+          text: "La publicacion ha sido eliminada",
+        });
+      } catch (error: unknown) {
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            text: "No se puede borrar la publicacion",
+          })
+        );
+      }
+    },
+    [dispatch, token, urlApi]
+  );
+  return { loadPosts, getPostById, deletePost };
 };
 
 export default usePost;

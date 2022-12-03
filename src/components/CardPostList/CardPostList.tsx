@@ -33,9 +33,11 @@ const CardPostList = ({
   id,
 }: CardPostListProps): JSX.Element => {
   const navigate = useNavigate();
+
   const handleClick = () => {
     navigate(`/posts/${id}`);
   };
+
   return (
     <CardPostListStyled>
       <ProfileIconStyled>
