@@ -63,7 +63,7 @@ describe("Given the custom hook usePost", () => {
   });
 
   describe("When it's methodt getPostByID invoked", () => {
-    test("Then its should dispatch should be called", async () => {
+    test("Then its should dispatch should be called with showLoadingActionCreator", async () => {
       const {
         result: {
           current: { getPostById },
@@ -79,7 +79,7 @@ describe("Given the custom hook usePost", () => {
     });
   });
   describe("and Axios return an error", () => {
-    test("Then dispatch should be called wiht show & hide modal and loading action creators, and modal wiht an error", async () => {
+    test("Then dispatch should be called with error", async () => {
       const {
         result: {
           current: { deletePost },
