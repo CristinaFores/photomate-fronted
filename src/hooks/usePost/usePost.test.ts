@@ -96,5 +96,41 @@ describe("Given the custom hook usePost", () => {
         expect(dispatchSpy).toHaveBeenCalledWith(showLoadingActionCreator());
       });
     });
+
+    describe("When its method deletePost is invoked with id", () => {
+      test("Then its should dispatch should be called", async () => {
+        const {
+          result: {
+            current: { deletePost },
+          },
+        } = renderHook(() => usePost(), {
+          wrapper: ProviderWrapper,
+        });
+
+        const id = "1234";
+
+        await deletePost(id);
+
+        expect(dispatchSpy).toBeCalled();
+      });
+    });
+
+    describe("When its method deletePost is invoked with id incorrect", () => {
+      test("Then its should dispatch should be called", async () => {
+        const {
+          result: {
+            current: { deletePost },
+          },
+        } = renderHook(() => usePost(), {
+          wrapper: ProviderWrapper,
+        });
+
+        const id = "1234";
+
+        await deletePost(id);
+
+        expect(dispatchSpy).toHaveBeenCalled();
+      });
+    });
   });
 });
