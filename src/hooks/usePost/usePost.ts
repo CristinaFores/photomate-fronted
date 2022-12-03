@@ -29,17 +29,16 @@ const usePost = () => {
       });
 
       const apiResponse = await data.posts;
-
+      dispatch(hiddenLoadingActionCreator());
       dispatch(loadPostActionCreator(apiResponse));
     } catch (error: unknown) {
+      dispatch(hiddenLoadingActionCreator());
       dispatch(
         showModalActionCreator({
           isError: true,
           text: "No hay ningun post disponible",
         })
       );
-    } finally {
-      dispatch(hiddenLoadingActionCreator());
     }
   }, [dispatch, token, urlApi]);
 
