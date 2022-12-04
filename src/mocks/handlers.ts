@@ -67,4 +67,12 @@ export const handlers = [
   rest.delete(`${url}/posts/6388c3df08d4c054bd2e59e`, (req, res, ctx) => {
     return res(ctx.status(400), ctx.json({}));
   }),
+
+  rest.post(`${url}/posts/post`, (req, res, ctx) => {
+    return res.once(ctx.status(201));
+  }),
+
+  rest.post(`${url}/posts/post`, (req, res, ctx) => {
+    return res(ctx.status(400));
+  }),
 ];

@@ -93,7 +93,39 @@ const usePost = () => {
     },
     [dispatch, token, urlApi]
   );
-  return { loadPosts, getPostById, deletePost };
+
+  const createPost = useCallback(
+    async (post: any) => {
+      dispatch(showLoadingActionCreator());
+
+      try {
+        await axios.post(`${urlApi}/posts/post`, post, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        dispatch(hiddenLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            text: "La publicación se ha genereado correctamente",
+            isError: false,
+          })
+        );
+      } catch {
+        dispatch(hiddenLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            text: "No se ha podido crear la publicacion, intentalo de nuevo más tarde",
+            isError: true,
+          })
+        );
+      }
+    },
+    [dispatch, token, urlApi]
+  );
+  return { loadPosts, getPostById, deletePost, createPost };
 };
 
 export default usePost;
