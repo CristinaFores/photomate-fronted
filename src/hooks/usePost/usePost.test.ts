@@ -129,4 +129,55 @@ describe("Given the custom hook usePost", () => {
       expect(dispatchSpy).toBeCalled();
     });
   });
+
+  describe("When its method createPost is invoked with a post", () => {
+    test("Then dispatch should be called  with an error", async () => {
+      const {
+        result: {
+          current: { createPost },
+        },
+      } = renderHook(() => usePost(), {
+        wrapper: ProviderWrapper,
+      });
+      const post = {
+        id: "",
+        owner: { username: "" },
+        title: "",
+        description: "hola",
+        location: "",
+        imagePaths: [],
+        date: "",
+        tags: [],
+        like: [],
+      };
+      await createPost(post);
+      expect(dispatchSpy).toBeCalled();
+    });
+  });
+
+  describe("When its method createPost is invoked with  a post", () => {
+    test("Then dispatch should be called the ditpatch", async () => {
+      const {
+        result: {
+          current: { createPost },
+        },
+      } = renderHook(() => usePost(), {
+        wrapper: ProviderWrapper,
+      });
+
+      const post = {
+        id: "",
+        title: "",
+        description: "",
+        location: "",
+        imagePaths: [],
+        date: "",
+        tags: [],
+        like: [],
+      };
+      await createPost(post);
+
+      expect(dispatchSpy).toBeCalled();
+    });
+  });
 });
