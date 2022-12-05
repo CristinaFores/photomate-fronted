@@ -1,11 +1,9 @@
 export interface newPost {
-  image: string[];
+  image?: string | File;
   title: string;
   description: string;
   location?: string;
-  imagePaths?: string[];
-  id: string;
-  owner: string;
+  buckpicture?: string[];
   date?: string;
   tags?: [];
   like?: [];
