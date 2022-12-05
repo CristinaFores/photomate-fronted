@@ -18,29 +18,40 @@ const usePost = () => {
   const dispatch = useAppDispatch();
 
   const token = localStorage.getItem("token");
-  const loadPosts = useCallback(async () => {
-    try {
-      dispatch(showLoadingActionCreator());
-      const { data } = await axios.get(`${urlApi}/posts/`, {
-        headers: {
-          Authorization: "Bearer " + token,
-          "Content-type": "text/plain",
-        },
-      });
+  const loadPosts = useCallback(
+    async ({ search, limit = 2 }: { search?: string; limit?: number }) => {
+      try {
+        dispatch(showLoadingActionCreator());
+        const { data } = await axios.get(`${urlApi}/posts/`, {
+          params: {
+            title: search,
+            limit,
+          },
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-type": "text/plain",
+          },
+        });
 
-      const apiResponse = await data.posts;
-      dispatch(hiddenLoadingActionCreator());
-      dispatch(loadPostActionCreator(apiResponse));
-    } catch (error: unknown) {
-      dispatch(hiddenLoadingActionCreator());
-      dispatch(
-        showModalActionCreator({
-          isError: true,
-          text: "No hay ningun post disponible",
-        })
-      );
-    }
-  }, [dispatch, token, urlApi]);
+        dispatch(hiddenLoadingActionCreator());
+        dispatch(
+          loadPostActionCreator({
+            posts: data.posts,
+            total: data.pagination.total,
+          })
+        );
+      } catch (error: unknown) {
+        dispatch(hiddenLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            text: "No hay ningun post disponible",
+          })
+        );
+      }
+    },
+    [dispatch, token, urlApi]
+  );
 
   const getPostById = useCallback(
     async (id: string) => {

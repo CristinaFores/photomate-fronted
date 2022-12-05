@@ -3,14 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 interface ProtectedRouteProps {
   children: JSX.Element;
-  isLogged: boolean;
 }
 
-const ProtectedRoute = ({
-  children,
-  isLogged,
-}: ProtectedRouteProps): JSX.Element => {
+const ProtectedRoute = ({ children }: ProtectedRouteProps): JSX.Element => {
   const navigate = useNavigate();
+  const isLogged = !!localStorage.getItem("token");
 
   useEffect(() => {
     if (!isLogged) {
@@ -18,6 +15,6 @@ const ProtectedRoute = ({
     }
   }, [isLogged, navigate]);
 
-  return children;
+  return isLogged ? children : <></>;
 };
 export default ProtectedRoute;

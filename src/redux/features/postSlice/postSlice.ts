@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Post, PostsState } from "./types";
 
 const initialPostState: PostsState = {
+  total: 0,
   posts: [],
   post: {
     id: "",
@@ -20,9 +21,13 @@ const postSlice = createSlice({
   name: "post",
   initialState: initialPostState,
   reducers: {
-    loadPost: (currentState, action: PayloadAction<Post[]>) => ({
+    loadPost: (
+      currentState,
+      action: PayloadAction<{ posts: Post[]; total: number }>
+    ) => ({
       ...currentState,
-      posts: [...action.payload],
+      posts: [...action.payload.posts],
+      total: action.payload.total,
     }),
     loadOnePost: (currentState, action: PayloadAction<Post>) => ({
       ...currentState,
