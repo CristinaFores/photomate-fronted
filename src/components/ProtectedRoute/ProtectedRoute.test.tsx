@@ -1,4 +1,3 @@
-import { screen } from "@testing-library/react";
 import renderWithProviders from "../../mocks/storeMock";
 
 import ProtectedRoute from "./ProtectedRoute";
