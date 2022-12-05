@@ -139,17 +139,10 @@ describe("Given the custom hook usePost", () => {
       } = renderHook(() => usePost(), {
         wrapper: ProviderWrapper,
       });
-      const post = {
-        id: "",
-        owner: { username: "" },
-        title: "",
-        description: "hola",
-        location: "",
-        imagePaths: [],
-        date: "",
-        tags: [],
-        like: [],
-      };
+      const post = new FormData();
+      post.append("title", "");
+      post.append("description", "hola");
+
       await createPost(post);
       expect(dispatchSpy).toBeCalled();
     });
@@ -165,16 +158,10 @@ describe("Given the custom hook usePost", () => {
         wrapper: ProviderWrapper,
       });
 
-      const post = {
-        id: "",
-        title: "",
-        description: "",
-        location: "",
-        imagePaths: [],
-        date: "",
-        tags: [],
-        like: [],
-      };
+      const post = new FormData();
+      post.append("title", "");
+      post.append("description", "");
+
       await createPost(post);
 
       expect(dispatchSpy).toBeCalled();

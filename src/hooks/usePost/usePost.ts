@@ -21,7 +21,7 @@ const usePost = () => {
   const loadPosts = useCallback(async () => {
     try {
       dispatch(showLoadingActionCreator());
-      const { data } = await axios.get(`${urlApi}/posts`, {
+      const { data } = await axios.get(`${urlApi}/posts/`, {
         headers: {
           Authorization: "Bearer " + token,
           "Content-type": "text/plain",
@@ -72,12 +72,12 @@ const usePost = () => {
   const deletePost = useCallback(
     async (id: string) => {
       try {
-        const { data } = await axios.delete<Post>(`${urlApi}/posts/${id}`, {
+        await axios.delete<Post>(`${urlApi}/posts/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        dispatch(deletePostActionCreator(data.id));
+        dispatch(deletePostActionCreator(id));
         showModalActionCreator({
           isError: false,
           text: "La publicacion ha sido eliminada",
@@ -95,13 +95,13 @@ const usePost = () => {
   );
 
   const createPost = useCallback(
-    async (post: any) => {
+    async (post: FormData) => {
       dispatch(showLoadingActionCreator());
 
       try {
-        await axios.post(`${urlApi}/posts/post`, post, {
+        await axios.post(`${urlApi}/posts`, post, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            Accept: "*/*",
             Authorization: `Bearer ${token}`,
           },
         });

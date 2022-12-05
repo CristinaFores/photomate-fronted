@@ -27,6 +27,8 @@ describe("Given component CardPostList", () => {
 
       const buttonLink = screen.getAllByRole("button");
 
+      await userEvent.click(buttonLink[1]!);
+
       await userEvent.click(buttonLink[2]!);
 
       expect(titleUser).toBeInTheDocument();

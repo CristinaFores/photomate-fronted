@@ -7,6 +7,7 @@ export interface Post {
   description: string;
   location?: string;
   imagePaths: string[];
+  buckpicture?: string[];
   date?: string;
   tags?: [];
   like?: [];

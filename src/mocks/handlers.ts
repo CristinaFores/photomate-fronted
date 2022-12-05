@@ -57,6 +57,9 @@ export const handlers = [
   }),
 
   rest.get(`${url}/posts/6388c3df08d4c054bd2e59e9`, (req, res, ctx) => {
+    return res.once(ctx.status(404), ctx.json({}));
+  }),
+  rest.get(`${url}/posts/9`, (req, res, ctx) => {
     return res(ctx.status(404), ctx.json({}));
   }),
 
@@ -68,11 +71,11 @@ export const handlers = [
     return res(ctx.status(400), ctx.json({}));
   }),
 
-  rest.post(`${url}/posts/post`, (req, res, ctx) => {
+  rest.post(`${url}/posts`, (req, res, ctx) => {
     return res.once(ctx.status(201));
   }),
 
-  rest.post(`${url}/posts/post`, (req, res, ctx) => {
+  rest.post(`${url}/posts`, (req, res, ctx) => {
     return res(ctx.status(400));
   }),
 ];

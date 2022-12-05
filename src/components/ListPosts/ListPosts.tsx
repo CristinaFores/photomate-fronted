@@ -19,7 +19,7 @@ const ListPosts = (): JSX.Element => {
           owner={post.owner.username}
           title={post.title}
           date={post.date}
-          imagePaths={post.imagePaths}
+          imagePaths={post.buckpicture!}
           key={post.id}
           id={post.id}
         />

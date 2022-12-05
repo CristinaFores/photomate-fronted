@@ -11,7 +11,7 @@ const NotFoundPage = () => {
     <>
       <NotFoundPageStyled>
         <StyledContaint>
-          <h1>Algo a fallado esta pagina no esta disponible</h1>
+          <h1>Algo ha fallado esta pagina no esta disponible</h1>
           <Button
             text="VOLVER"
             ariaLabel={"VOLVER"}

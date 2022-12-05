@@ -14,6 +14,7 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+import usePost from "../../hooks/usePost/usePost";
 
 interface CardPostListProps {
   owner: string;
@@ -32,7 +33,12 @@ const CardPostList = ({
   date,
   id,
 }: CardPostListProps): JSX.Element => {
+  const { deletePost } = usePost();
   const navigate = useNavigate();
+
+  const handleDelete = () => {
+    deletePost(id);
+  };
 
   const handleClick = () => {
     navigate(`/posts/${id}`);
@@ -51,7 +57,11 @@ const CardPostList = ({
             <FontAwesomeIcon className="icon-edit" icon={faPenToSquare} />
           </button>
           <button>
-            <FontAwesomeIcon className="icon-edit" icon={faCircleXmark} />
+            <FontAwesomeIcon
+              onClick={handleDelete}
+              className="icon-edit"
+              icon={faCircleXmark}
+            />
           </button>
         </ContainIconEditStyled>
       </ProfileIconStyled>
