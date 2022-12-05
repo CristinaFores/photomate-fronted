@@ -8,7 +8,7 @@ const Navbar = (): JSX.Element => {
   return (
     <NavbarStyled className="menu">
       <li>
-        <NavLink to={"/postId"} aria-label="Nueva publicacion">
+        <NavLink to={"/newpost"} aria-label="Nueva publicacion">
           <FontAwesomeIcon className="icon-navbar" icon={faSquarePlus} />
         </NavLink>
       </li>

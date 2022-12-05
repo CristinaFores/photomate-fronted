@@ -5,6 +5,7 @@ import ListPostPage from "../../pages/ListPostsPage/ListPostsPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
+import CreateNewPost from "../CreateNewPost/CreateNewPost";
 import Header from "../Header/Header";
 
 import Logo from "../Logo/Logo";
@@ -28,6 +29,7 @@ const Layout = (): JSX.Element => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/home" element={<ListPostPage />} />
           <Route path="/posts/:id" element={<DetailPostPage />} />
+          <Route path="/newpost" element={<CreateNewPost />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </LayoutStyled>
