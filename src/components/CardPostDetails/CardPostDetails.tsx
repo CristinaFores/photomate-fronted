@@ -30,6 +30,7 @@ const CardPostDetails = ({
   const handleClick = () => {
     navigate(`/home`);
   };
+
   return (
     <>
       <CardDetailPostStyled>
@@ -38,12 +39,12 @@ const CardPostDetails = ({
           <h3>{owner}</h3>
         </ProfileIconDetailStyled>
 
-        {imagePaths.map((img, index) => (
+        {imagePaths?.map((img, index) => (
           <img src={img} alt="imagenes de la publicacion" key={index} />
         ))}
 
         <PostDetailStyled>
-          <span>{date}</span>
+          <span>{new Date(date || "").toLocaleDateString()}</span>
           <h3>{title}</h3>
           <p>{description}</p>
         </PostDetailStyled>
