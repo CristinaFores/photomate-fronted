@@ -22,15 +22,17 @@ describe("Given postSlice", () => {
       const initialState: PostsState = {
         posts: [],
         post: posts[1],
+        total: 0,
       };
       const expectedState: PostsState = {
         posts: posts,
         post: posts[1],
+        total: 0,
       };
 
       const expectLoadpost = postsReducer(
         initialState,
-        loadPostActionCreator(expectedState.posts)
+        loadPostActionCreator({ posts: expectedState.posts, total: 1 })
       );
       expect(posts).toStrictEqual(expectLoadpost.posts);
     });
@@ -50,10 +52,12 @@ describe("Given postSlice", () => {
         const initialState: PostsState = {
           posts: [],
           post: posts[1],
+          total: 0,
         };
         const expectedState: PostsState = {
           posts: posts,
           post: posts[1],
+          total: 0,
         };
 
         const expectLoadpost = postsReducer(
@@ -83,6 +87,7 @@ describe("Given postSlice", () => {
             description: "",
             imagePaths: [],
           },
+          total: 0,
         };
         const currentState = posts;
 

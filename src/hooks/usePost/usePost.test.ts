@@ -26,7 +26,7 @@ describe("Given the custom hook usePos", () => {
         wrapper: ProviderWrapper,
       });
 
-      await loadPosts();
+      await loadPosts({});
 
       expect(dispatchSpy).toBeCalled();
     });

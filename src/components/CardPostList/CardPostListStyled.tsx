@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const CardPostListStyled = styled.li`
   display: flex;
   flex-direction: column;
-  height: 400px;
   width: 252px;
   gap: 0.5rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -28,6 +27,7 @@ export const ProfileIconStyled = styled.div`
 
   h3 {
     font-size: 1rem;
+    overflow-wrap: break-word;
   }
   div {
     display: flex;
@@ -51,8 +51,7 @@ export const ImgStyled = styled.img`
 `;
 
 export const ContainButtonStyled = styled.div`
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 0rem 1rem 1rem;
   display: flex;
   justify-content: flex-end;
 `;

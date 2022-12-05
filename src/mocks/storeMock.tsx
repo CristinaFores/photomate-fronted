@@ -39,6 +39,7 @@ export const initialPostState: PostsState = {
     description: "",
     imagePaths: [""],
   },
+  total: 0,
 };
 
 export const mockInitialStore: typeof store = configureStore({

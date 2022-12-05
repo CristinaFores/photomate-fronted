@@ -69,7 +69,7 @@ const CardPostList = ({
         <ImgStyled src={img} alt="imagenes de la publicacion" key={index} />
       ))}
       <TitelPostyled>
-        <span>{date}</span>
+        <span>{new Date(date || "").toLocaleDateString()}</span>
         <h3>{title}</h3>
       </TitelPostyled>
 

@@ -23,6 +23,15 @@ const CreateNewPost = (): JSX.Element => {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
+    if (event.target.id === "image") {
+      const input = event.target as HTMLInputElement;
+      const files = input.files as FileList;
+      setFormPost({
+        ...formPost,
+        [event.target.id]: files[0],
+      });
+      return;
+    }
     setFormPost({
       ...formPost,
       [event.target.id]: event.target.value,
@@ -39,10 +48,10 @@ const CreateNewPost = (): JSX.Element => {
 
     await createPost(formPostToSubmit);
   };
+
   return (
     <>
       <CreateNewPostStyled onSubmit={sendPost}>
-        <img src="" alt="" />
         <Input
           type="text"
           placeholder="Titulo de la la publicacion"

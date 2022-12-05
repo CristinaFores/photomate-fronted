@@ -17,7 +17,7 @@ const DetailPostPage = (): JSX.Element => {
       <CardPostDetails
         title={post.title}
         description={post.description}
-        imagePaths={post.imagePaths}
+        imagePaths={post.buckpicture!}
         date={post.date}
         key={id}
         owner={post.owner.username}
