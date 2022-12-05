@@ -25,10 +25,7 @@ const CreateNewPost = (): JSX.Element => {
   ) => {
     setFormPost({
       ...formPost,
-      [event.target.id]:
-        event.target.id === "image"
-          ? (event.target as HTMLInputElement).files![0]
-          : event.target.value,
+      [event.target.id]: event.target.value,
     });
   };
 
@@ -45,6 +42,7 @@ const CreateNewPost = (): JSX.Element => {
   return (
     <>
       <CreateNewPostStyled onSubmit={sendPost}>
+        <img src="" alt="" />
         <Input
           type="text"
           placeholder="Titulo de la la publicacion"
@@ -59,7 +57,7 @@ const CreateNewPost = (): JSX.Element => {
         <textarea
           id="description"
           onChange={handleInputChange}
-          defaultValue="Texto de la publicacion*"
+          defaultValue=""
         ></textarea>
 
         <Input
