@@ -20,7 +20,6 @@ const Button = ({
   return (
     <ButtonStyled
       styleType={styleType}
-      className="button"
       onClick={action}
       aria-label={ariaLabel}
       disabled={disabled}
