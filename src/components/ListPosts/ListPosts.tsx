@@ -5,13 +5,12 @@ import CardPostList from "../CardPostList/CardPostList";
 import { ListPostsStyled } from "./ListPostsStyled";
 
 const ListPosts = (): JSX.Element => {
-  const { loadPosts, deletePost } = usePost();
-  const { posts, post } = useAppSelector((state) => state.post);
+  const { loadPosts } = usePost();
+  const { posts } = useAppSelector((state) => state.post);
 
   useEffect(() => {
-    deletePost(post.id);
     loadPosts();
-  }, [deletePost, loadPosts, post.id]);
+  }, [loadPosts]);
 
   return (
     <ListPostsStyled>
