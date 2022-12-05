@@ -51,24 +51,18 @@ export const handlers = [
       ])
     );
   }),
-
-  rest.get(`${url}/posts/${currentPostMock.id}`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(currentPostMock));
-  }),
-
   rest.get(`${url}/posts/6388c3df08d4c054bd2e59e9`, (req, res, ctx) => {
-    return res.once(ctx.status(404), ctx.json({}));
-  }),
-  rest.get(`${url}/posts/9`, (req, res, ctx) => {
     return res(ctx.status(404), ctx.json({}));
   }),
-
-  rest.delete(`${url}/posts/12345`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json({}));
+  rest.get(`${url}/posts/:id`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(currentPostMock));
   }),
 
   rest.delete(`${url}/posts/6388c3df08d4c054bd2e59e`, (req, res, ctx) => {
     return res(ctx.status(400), ctx.json({}));
+  }),
+  rest.delete(`${url}/posts/:id`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({}));
   }),
 
   rest.post(`${url}/posts`, (req, res, ctx) => {
