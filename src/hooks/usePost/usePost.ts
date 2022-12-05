@@ -72,12 +72,12 @@ const usePost = () => {
   const deletePost = useCallback(
     async (id: string) => {
       try {
-        const { data } = await axios.delete<Post>(`${urlApi}/posts/${id}`, {
+        await axios.delete<Post>(`${urlApi}/posts/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        dispatch(deletePostActionCreator(data.id));
+        dispatch(deletePostActionCreator(id));
         showModalActionCreator({
           isError: false,
           text: "La publicacion ha sido eliminada",
