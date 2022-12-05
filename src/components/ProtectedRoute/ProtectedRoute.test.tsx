@@ -14,9 +14,7 @@ describe("Given a ProtectionRoute component", () => {
     test("Then it should show a span with Home as text", () => {
       const expectedText = "Home";
 
-      renderWithProviders(
-        <ProtectedRoute children={<p>{expectedText}</p>} isLogged={true} />
-      );
+      renderWithProviders(<ProtectedRoute children={<p>{expectedText}</p>} />);
 
       const expectedSpan = screen.getByText(expectedText);
 
@@ -28,9 +26,7 @@ describe("Given a ProtectionRoute component", () => {
     test("Then it should show a span with Home as text", () => {
       const expectedText = "Home";
 
-      renderWithProviders(
-        <ProtectedRoute children={<p>{expectedText}</p>} isLogged={false} />
-      );
+      renderWithProviders(<ProtectedRoute children={<p>{expectedText}</p>} />);
 
       expect(mockedUseNavigate).toHaveBeenCalledWith("/login");
     });
