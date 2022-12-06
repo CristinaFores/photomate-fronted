@@ -7,6 +7,7 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import { useAppSelector } from "../../redux/hooks";
 import CreateNewPost from "../CreateNewPost/CreateNewPost";
+import EditPost from "../EditPost/EditPost";
 import Header from "../Header/Header";
 
 import Logo from "../Logo/Logo";
@@ -26,8 +27,8 @@ const Layout = (): JSX.Element => {
             <Logo />
             {isLogged ? (
               <>
-                <SearchInput />
                 <Navbar />
+                <SearchInput />
               </>
             ) : null}
           </>
@@ -49,6 +50,7 @@ const Layout = (): JSX.Element => {
           />
           <Route path="/posts/:id" element={<DetailPostPage />} />
           <Route path="/newpost" element={<CreateNewPost />} />
+          <Route path="/editpost/:id" element={<EditPost />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </LayoutStyled>
