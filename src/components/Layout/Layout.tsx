@@ -1,15 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import DetailPostPage from "../../pages/DetailPostPage/DetailPostPage";
 import ListPostPage from "../../pages/ListPostsPage/ListPostsPage";
-
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import { useAppSelector } from "../../redux/hooks";
-import CreateNewPost from "../CreateNewPost/CreateNewPost";
-import EditPost from "../EditPost/EditPost";
 import Header from "../Header/Header";
-
 import Logo from "../Logo/Logo";
 import Navbar from "../NavBar/Navbar";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -49,8 +45,8 @@ const Layout = (): JSX.Element => {
             }
           />
           <Route path="/posts/:id" element={<DetailPostPage />} />
-          <Route path="/newpost" element={<CreateNewPost />} />
-          <Route path="/editpost/:id" element={<EditPost />} />
+          {/* <Route path="/newpost" element={<CreatePostPage />} />
+          <Route path="/editpost/:id" element={<EditPostPage />} /> */}
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </LayoutStyled>
