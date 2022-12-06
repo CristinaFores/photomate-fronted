@@ -1,5 +1,8 @@
 import { useCallback } from "react";
-import { loginUserActionCreator } from "../../redux/features/userSlice/userSlice";
+import {
+  loginUserActionCreator,
+  userLogoutActionCreator,
+} from "../../redux/features/userSlice/userSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import decodeToken from "../../utils/decode";
 
@@ -15,7 +18,12 @@ const useToken = () => {
     }
   }, [dispatch]);
 
-  return { getToken };
+  const deleteToken = () => {
+    localStorage.removeItem("token");
+    dispatch(userLogoutActionCreator());
+  };
+
+  return { getToken, deleteToken };
 };
 
 export default useToken;

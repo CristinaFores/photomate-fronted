@@ -68,4 +68,24 @@ describe("Given the useToken custom hook", () => {
       expect(dispatchSpy).not.toHaveBeenCalled();
     });
   });
+
+  describe("When its method deleteToken is invoked and there is the token  in local storage", () => {
+    test("Then the token should be removed from local storage", async () => {
+      const { result } = renderHook(() => useToken(), {
+        wrapper: ProviderWrapper,
+      });
+
+      const user = {
+        id: "123456789",
+        token: "",
+        username: "cristina",
+      };
+
+      Storage.prototype.getItem = jest.fn().mockReturnValue(user.token);
+
+      await result.current.deleteToken();
+
+      expect(dispatchSpy).toHaveBeenCalled();
+    });
+  });
 });
