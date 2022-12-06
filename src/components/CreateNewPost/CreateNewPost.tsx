@@ -1,14 +1,24 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { newPost } from "../../hooks/usePost/types";
 import usePost from "../../hooks/usePost/usePost";
+
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { InputLabelStyled } from "../Input/InputStyled";
 import { TextSpanStyled } from "../Register/RegisterStyled";
 import { CreateNewPostStyled } from "./CreateNewPostStyled";
 
-const CreateNewPost = (): JSX.Element => {
-  const { createPost } = usePost();
+interface CreateNewPostProps {
+  isEditMode?: boolean;
+}
+
+const CreateNewPost = ({
+  isEditMode = false,
+}: CreateNewPostProps): JSX.Element => {
+  const { id } = useParams();
+
+  const { createPost, upddatePost } = usePost();
 
   const initialCreatePost: newPost = {
     description: "",
@@ -46,7 +56,12 @@ const CreateNewPost = (): JSX.Element => {
     formPostToSubmit.append("title", formPost.title);
     formPostToSubmit.append("image", formPost.image!);
 
-    await createPost(formPostToSubmit);
+    if (!isEditMode) {
+      await createPost(formPostToSubmit);
+      return;
+    }
+
+    await upddatePost(formPostToSubmit, id!);
   };
 
   return (
@@ -77,7 +92,15 @@ const CreateNewPost = (): JSX.Element => {
           id="image"
           onChange={handleInputChange}
         />
-        <Button styleType="big" text="Publicar" ariaLabel="Publicar"></Button>
+        {isEditMode ? (
+          <Button
+            styleType="big"
+            text="Modificar"
+            ariaLabel="Modificar"
+          ></Button>
+        ) : (
+          <Button styleType="big" text="Publicar" ariaLabel="Publicar"></Button>
+        )}
         <TextSpanStyled>
           <p>Los campos marcados con * son obligatorios</p>
         </TextSpanStyled>

@@ -26,13 +26,40 @@ describe("Given component CardPostList", () => {
       });
 
       const buttonLink = screen.getAllByRole("button");
+      const icon = screen.getAllByRole("img");
 
+      await userEvent.click(icon[0]);
+
+      await userEvent.click(icon[1]);
+
+      await userEvent.click(buttonLink[0]!);
       await userEvent.click(buttonLink[1]!);
-
       await userEvent.click(buttonLink[2]!);
 
       expect(titleUser).toBeInTheDocument();
       expect(navigate).toHaveBeenCalledWith("/posts/");
+    });
+  });
+});
+
+describe("Given component  CardPostList", () => {
+  describe("When it render CardPostList", () => {
+    test("Then its should show card with titles:'Cristina' and button 'Leer más', and to call navigate /posts/", async () => {
+      renderWithProviders(
+        <CardPostList
+          owner={"Cris"}
+          title={"hola"}
+          imagePaths={["", ""]}
+          id={""}
+        />
+      );
+
+      const icon = screen.getAllByRole("img");
+      const buttonLink = screen.getAllByRole("button");
+      await userEvent.click(buttonLink[0]!);
+
+      expect(icon[0]).toBeInTheDocument();
+      expect(navigate).toBeCalled();
     });
   });
 });
