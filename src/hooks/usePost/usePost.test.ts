@@ -142,7 +142,6 @@ describe("Given the custom hook usePost", () => {
       const post = new FormData();
       post.append("title", "");
       post.append("description", "hola");
-
       await createPost(post);
       expect(dispatchSpy).toBeCalled();
     });
@@ -163,6 +162,48 @@ describe("Given the custom hook usePost", () => {
       post.append("description", "");
 
       await createPost(post);
+
+      expect(dispatchSpy).toBeCalled();
+    });
+  });
+
+  describe("When its method updatePost is invoked with  a post", () => {
+    test("Then dispatch should be called the ditpatch with correct", async () => {
+      const {
+        result: {
+          current: { upddatePost },
+        },
+      } = renderHook(() => usePost(), {
+        wrapper: ProviderWrapper,
+      });
+
+      const id = "12345";
+      const post = new FormData();
+      post.append("title", "");
+      post.append("description", "");
+
+      await upddatePost(post, id);
+
+      expect(dispatchSpy).toBeCalled();
+    });
+  });
+
+  describe("When its method updatePost is invoked with  a post modify", () => {
+    test("Then dispatch should be called the ditpatch with error", async () => {
+      const {
+        result: {
+          current: { upddatePost },
+        },
+      } = renderHook(() => usePost(), {
+        wrapper: ProviderWrapper,
+      });
+
+      const id = "12345";
+      const post = new FormData();
+      post.append("title", "");
+      post.append("description", "");
+
+      await upddatePost(post, id);
 
       expect(dispatchSpy).toBeCalled();
     });

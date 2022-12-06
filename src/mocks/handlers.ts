@@ -72,4 +72,11 @@ export const handlers = [
   rest.post(`${url}/posts`, (req, res, ctx) => {
     return res(ctx.status(400));
   }),
+  rest.patch(`${url}/posts/12345`, (req, res, ctx) => {
+    return res.once(ctx.status(400));
+  }),
+
+  rest.patch(`${url}/posts/:id`, (req, res, ctx) => {
+    return res.once(ctx.status(201));
+  }),
 ];

@@ -136,7 +136,38 @@ const usePost = () => {
     },
     [dispatch, token, urlApi]
   );
-  return { loadPosts, getPostById, deletePost, createPost };
+  const upddatePost = useCallback(
+    async (post: FormData, id: string) => {
+      dispatch(showLoadingActionCreator());
+
+      try {
+        await axios.patch(`${urlApi}/posts/${id}`, post, {
+          headers: {
+            Accept: "*/*",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        dispatch(hiddenLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            text: "La publicación se ha actualizado  correctamente",
+            isError: false,
+          })
+        );
+      } catch {
+        dispatch(hiddenLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            text: "No se ha podido modificar la publicacion, intentalo de nuevo más tarde",
+            isError: true,
+          })
+        );
+      }
+    },
+    [dispatch, token, urlApi]
+  );
+  return { loadPosts, getPostById, deletePost, createPost, upddatePost };
 };
 
 export default usePost;
