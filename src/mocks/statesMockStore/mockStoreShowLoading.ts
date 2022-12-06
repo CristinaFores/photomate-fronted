@@ -4,7 +4,14 @@ import { uiReducer } from "../../redux/features/uiSlice/uiSlice";
 import { userReducer } from "../../redux/features/userSlice/userSlice";
 import { store } from "../../redux/store";
 import { mockUiLoadingShowState } from "../statesMock/mockStateui";
-import { initialPostState, initialState } from "../storeMock";
+import { initialPostState } from "../storeMock";
+
+export const mockUserStateLoggued = {
+  id: "",
+  token: "",
+  username: "",
+  isLogged: true,
+};
 
 const mockLoadingShownStore: typeof store = configureStore({
   reducer: {
@@ -14,7 +21,7 @@ const mockLoadingShownStore: typeof store = configureStore({
   },
   preloadedState: {
     ui: mockUiLoadingShowState,
-    user: initialState,
+    user: mockUserStateLoggued,
     post: initialPostState,
   },
 });

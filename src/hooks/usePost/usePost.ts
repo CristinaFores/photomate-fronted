@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   deletePostActionCreator,
   loadOnePostActionCreator,
@@ -16,6 +17,7 @@ import { useAppDispatch } from "../../redux/hooks";
 const usePost = () => {
   const urlApi = process.env.REACT_APP_API_URL;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
   const loadPosts = useCallback(
@@ -124,6 +126,7 @@ const usePost = () => {
             isError: false,
           })
         );
+        navigate("/home");
       } catch {
         dispatch(hiddenLoadingActionCreator());
         dispatch(
@@ -134,7 +137,7 @@ const usePost = () => {
         );
       }
     },
-    [dispatch, token, urlApi]
+    [dispatch, navigate, token, urlApi]
   );
   const upddatePost = useCallback(
     async (post: FormData, id: string) => {
@@ -155,6 +158,7 @@ const usePost = () => {
             isError: false,
           })
         );
+        navigate("/home");
       } catch {
         dispatch(hiddenLoadingActionCreator());
         dispatch(
@@ -165,7 +169,7 @@ const usePost = () => {
         );
       }
     },
-    [dispatch, token, urlApi]
+    [dispatch, navigate, token, urlApi]
   );
   return { loadPosts, getPostById, deletePost, createPost, upddatePost };
 };

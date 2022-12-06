@@ -1,11 +1,15 @@
 import { Route, Routes } from "react-router-dom";
+import CreatePostPage from "../../pages/CreatePostPage/CreatePostPage";
 import DetailPostPage from "../../pages/DetailPostPage/DetailPostPage";
+import EditPostPage from "../../pages/EditPagePost/EditPostPage";
 import ListPostPage from "../../pages/ListPostsPage/ListPostsPage";
+
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import { useAppSelector } from "../../redux/hooks";
 import Header from "../Header/Header";
+
 import Logo from "../Logo/Logo";
 import Navbar from "../NavBar/Navbar";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -39,14 +43,15 @@ const Layout = (): JSX.Element => {
           <Route
             path="/home"
             element={
-              <ProtectedRoute>
-                <ListPostPage />
-              </ProtectedRoute>
+              <ProtectedRoute
+                children={<ListPostPage />}
+                isLogged={true}
+              ></ProtectedRoute>
             }
           />
           <Route path="/posts/:id" element={<DetailPostPage />} />
-          {/* <Route path="/newpost" element={<CreatePostPage />} />
-          <Route path="/editpost/:id" element={<EditPostPage />} /> */}
+          <Route path="/newpost" element={<CreatePostPage />} />
+          <Route path="/editpost/:id" element={<EditPostPage />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </LayoutStyled>

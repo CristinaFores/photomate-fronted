@@ -1,4 +1,5 @@
 import { screen } from "@testing-library/react";
+import mockLoadingShownStore from "../../mocks/statesMockStore/mockStoreShowLoading";
 import renderWithProviders, { mockInitialStore } from "../../mocks/storeMock";
 import Layout from "./Layout";
 
@@ -25,7 +26,7 @@ describe("Given an Layout component", () => {
     test("Then it shoul render an App Component, with input name 'Nombre', a button  with text 'Entrar', and link 'Entrar", () => {
       renderWithProviders(<Layout />, {
         initialEntries: ["/"],
-        store: mockInitialStore,
+        store: mockLoadingShownStore,
       });
 
       const expectIinputName = screen.queryByRole("textbox", {
