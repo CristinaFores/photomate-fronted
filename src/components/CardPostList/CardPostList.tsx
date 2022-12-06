@@ -56,19 +56,11 @@ const CardPostList = ({
         </div>
 
         <ContainIconEditStyled>
-          <button>
-            <FontAwesomeIcon
-              onClick={handleClickUpdate}
-              className="icon-edit"
-              icon={faPenToSquare}
-            />
+          <button onClick={handleClickUpdate}>
+            <FontAwesomeIcon className="icon-edit" icon={faPenToSquare} />
           </button>
-          <button>
-            <FontAwesomeIcon
-              onClick={handleDelete}
-              className="icon-edit"
-              icon={faCircleXmark}
-            />
+          <button onClick={handleDelete}>
+            <FontAwesomeIcon className="icon-edit" icon={faCircleXmark} />
           </button>
         </ContainIconEditStyled>
       </ProfileIconStyled>
