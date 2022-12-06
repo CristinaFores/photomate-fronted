@@ -1,8 +1,23 @@
+import { useCallback } from "react";
 import usePost from "../../hooks/usePost/usePost";
 import SearchInputStyled from "./SearchInputStyled";
 
 const SearchInput = (): JSX.Element => {
   const { loadPosts } = usePost();
+
+  const debounce = <T extends any[]>(
+    callbackFunction: (...args: T) => void,
+    delay: number
+  ) => {
+    let timerId: ReturnType<typeof setTimeout>;
+    return (...args: T) => {
+      clearTimeout(timerId);
+      timerId = setTimeout(() => callbackFunction(...args), delay);
+    };
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncePost = useCallback(debounce(loadPosts, 2000), [loadPosts]);
 
   return (
     <>
@@ -12,7 +27,7 @@ const SearchInput = (): JSX.Element => {
           type="search"
           className="input"
           onChange={(e) => {
-            loadPosts({ search: e.target.value, limit: 0 });
+            debouncePost({ search: e.target.value, limit: 0 });
           }}
         />
       </SearchInputStyled>
