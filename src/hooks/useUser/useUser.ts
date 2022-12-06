@@ -7,14 +7,19 @@ import {
   showModalActionCreator,
 } from "../../redux/features/uiSlice/uiSlice";
 import { User } from "../../redux/features/userSlice/types";
-import { loginUserActionCreator } from "../../redux/features/userSlice/userSlice";
+import {
+  loginUserActionCreator,
+  userLogoutActionCreator,
+} from "../../redux/features/userSlice/userSlice";
 import decodeToken from "../../utils/decode";
 import { JwtPayloadCustom } from "../../utils/types";
+import useToken from "../useToken/useToken";
 import { RegisterData, UserCredentials } from "./types";
 
 const useUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { deleteToken } = useToken();
   const urlApi = process.env.REACT_APP_API_URL;
 
   const registerUser = async (userRegister: RegisterData) => {
@@ -71,7 +76,13 @@ const useUser = () => {
       );
     }
   };
-  return { registerUser, loginUser };
+  const userLogout = () => {
+    deleteToken();
+
+    dispatch(userLogoutActionCreator());
+    navigate("/login");
+  };
+  return { registerUser, loginUser, userLogout };
 };
 
 export default useUser;
