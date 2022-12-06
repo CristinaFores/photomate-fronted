@@ -43,6 +43,9 @@ const CardPostList = ({
   const handleClick = () => {
     navigate(`/posts/${id}`);
   };
+  const handleClickUpdate = () => {
+    navigate(`/editpost/${id}`);
+  };
 
   return (
     <CardPostListStyled>
@@ -54,7 +57,11 @@ const CardPostList = ({
 
         <ContainIconEditStyled>
           <button>
-            <FontAwesomeIcon className="icon-edit" icon={faPenToSquare} />
+            <FontAwesomeIcon
+              onClick={handleClickUpdate}
+              className="icon-edit"
+              icon={faPenToSquare}
+            />
           </button>
           <button>
             <FontAwesomeIcon
