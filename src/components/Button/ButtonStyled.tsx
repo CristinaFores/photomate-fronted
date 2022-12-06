@@ -16,12 +16,10 @@ const smallestButton = css`
   font-size: 1rem;
   height: 40px;
   border: none;
-  font-size: 20px;
-  color: #fff;
+  color: ${(props) => props.theme.colors.primary.light};
   border-radius: 6px;
-  background-color: rgb(24, 119, 242);
+  background-color: ${(props) => props.theme.colors.button.active};
   width: 5rem;
-  font-size: 1rem;
 `;
 const ButtonStyled = styled.button<ButtonStyledProps>`
   font-family: inherit;

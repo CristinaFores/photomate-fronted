@@ -15,9 +15,11 @@ import {
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 import usePost from "../../hooks/usePost/usePost";
+import { useAppSelector } from "../../redux/hooks";
+import { Post } from "../../redux/features/postSlice/types";
 
 interface CardPostListProps {
-  owner: string;
+  owner: Post["owner"];
   title: string;
   imagePaths: string[];
   date?: string;
@@ -34,6 +36,7 @@ const CardPostList = ({
   id,
 }: CardPostListProps): JSX.Element => {
   const { deletePost } = usePost();
+  const { id: userId } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
   const handleDelete = () => {
@@ -52,16 +55,22 @@ const CardPostList = ({
       <ProfileIconStyled>
         <div>
           <FontAwesomeIcon className="icon-profile" icon={faCircleUser} />
-          <h3>{owner}</h3>
+          <h3>{owner.username}</h3>
         </div>
 
         <ContainIconEditStyled>
-          <button onClick={handleClickUpdate}>
-            <FontAwesomeIcon className="icon-edit" icon={faPenToSquare} />
-          </button>
-          <button onClick={handleDelete}>
-            <FontAwesomeIcon className="icon-edit" icon={faCircleXmark} />
-          </button>
+          {owner.id === userId ? (
+            <>
+              <button onClick={handleClickUpdate} aria-label="editar">
+                <FontAwesomeIcon className="icon-edit" icon={faPenToSquare} />
+              </button>
+              <button onClick={handleDelete} aria-label="borrar">
+                <FontAwesomeIcon className="icon-edit" icon={faCircleXmark} />
+              </button>
+            </>
+          ) : (
+            <></>
+          )}
         </ContainIconEditStyled>
       </ProfileIconStyled>
       {imagePaths.map((img, index) => (

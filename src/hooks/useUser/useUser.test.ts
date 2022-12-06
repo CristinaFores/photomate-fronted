@@ -6,6 +6,7 @@ import {
   showLoadingActionCreator,
   showModalActionCreator,
 } from "../../redux/features/uiSlice/uiSlice";
+import { userLogoutActionCreator } from "../../redux/features/userSlice/userSlice";
 import { JwtPayloadCustom } from "../../utils/types";
 import { RegisterData, UserCredentials } from "./types";
 import useUser from "./useUser";
@@ -21,8 +22,21 @@ jest.mock("jwt-decode", () => {
     ({ username: userMock.username, id: userMock.id } as JwtPayloadCustom);
 });
 
+const mockRemoveToken = jest.fn();
+
+jest.mock("../useToken/useToken", () => {
+  return () => ({
+    deleteToken: mockRemoveToken,
+  });
+});
+
 const dispatchSpy = jest.spyOn(mockInitialStore, "dispatch");
 
+const mockedUseNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockedUseNavigate,
+}));
 describe("Given the custom hook useUser", () => {
   describe("When it's method registerUser is invoked with  email: cristina@email.com username: Cristina,password: 12345678", () => {
     test("Then dispatch should be called  showModalActionCreator  with  with text: Te has registrado correctamente, Por favor inicia sesión,", async () => {
@@ -125,6 +139,20 @@ describe("Given the useUser custom hook", () => {
 
       await loginUser(user);
       expect(dispatchSpy).toHaveBeenCalledWith(showLoadingActionCreator());
+    });
+  });
+
+  describe("When its method userLogout is invoked", () => {
+    test("Then deleteToken should be called and dispatch should be called with 'userLogoutActionCreator'", () => {
+      const { result } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+
+      result.current.userLogout();
+
+      expect(mockRemoveToken).toHaveBeenCalled();
+      expect(dispatchSpy).toBeCalledWith(userLogoutActionCreator());
+      expect(mockedUseNavigate).toHaveBeenCalledWith("/login");
     });
   });
 });

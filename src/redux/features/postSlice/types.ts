@@ -2,6 +2,7 @@ export interface Post {
   id: string;
   owner: {
     username: string;
+    id?: string;
   };
   title: string;
   description: string;
