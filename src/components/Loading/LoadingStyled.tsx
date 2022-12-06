@@ -5,10 +5,10 @@ export const LoadingStyled = styled.span`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   height: 100%;
   top: 0;
-  left: 0;
+  left: -33px;
   right: 0;
   bottom: 0;
   z-index: 1;

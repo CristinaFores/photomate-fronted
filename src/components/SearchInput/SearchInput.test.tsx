@@ -5,14 +5,16 @@ import renderWithProviders from "../../mocks/storeMock";
 
 import SearchInput from "./SearchInput";
 
-describe("Given SearchInput", () => {
-  describe("When it is rendered", () => {
-    test("Then it should a input search", async () => {
+jest.setTimeout(20000);
+
+describe("Given a SearchInput component", () => {
+  describe("When it renders", () => {
+    test("Then it should show the input search", async () => {
       renderWithProviders(<SearchInput />);
 
-      const inputSearch = screen.getByRole("searchbox"!);
+      const inputSearch = screen.queryByRole("searchbox")!;
 
-      await userEvent.type(inputSearch!, "a");
+      await userEvent.type(inputSearch, "h", { delay: 2100 });
 
       expect(inputSearch).toBeInTheDocument();
     });
