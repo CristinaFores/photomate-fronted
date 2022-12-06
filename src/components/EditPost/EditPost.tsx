@@ -3,10 +3,11 @@ import { useParams } from "react-router-dom";
 import { newPost } from "../../hooks/usePost/types";
 import usePost from "../../hooks/usePost/usePost";
 import Button from "../Button/Button";
-import { CreateNewPostStyled } from "../CreateNewPost/CreateNewPostStyled";
+
 import Input from "../Input/Input";
 import { InputLabelStyled } from "../Input/InputStyled";
 import { TextSpanStyled } from "../Register/RegisterStyled";
+import { EditPostStyled } from "./EditPostStyled";
 
 const EditPost = (): JSX.Element => {
   const { upddatePost } = usePost();
@@ -53,7 +54,7 @@ const EditPost = (): JSX.Element => {
 
   return (
     <>
-      <CreateNewPostStyled onSubmit={sendPost}>
+      <EditPostStyled onSubmit={sendPost}>
         <Input
           type="text"
           placeholder="Titulo de la la publicacion"
@@ -83,7 +84,7 @@ const EditPost = (): JSX.Element => {
         <TextSpanStyled>
           <p>Los campos marcados con * son obligatorios</p>
         </TextSpanStyled>
-      </CreateNewPostStyled>
+      </EditPostStyled>
     </>
   );
 };
