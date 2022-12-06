@@ -18,7 +18,7 @@ const ListPosts = (): JSX.Element => {
     <ListPostsStyled>
       {posts.map((post, index) => (
         <CardPostList
-          owner={post.owner.username}
+          owner={post.owner}
           title={post.title}
           date={post.date}
           imagePaths={post.buckpicture!}
@@ -26,12 +26,14 @@ const ListPosts = (): JSX.Element => {
           id={post.id}
         />
       ))}
-      <Pagination
-        disabled={posts.length >= total}
-        onClick={() => {
-          setTotalPosts(totalPosts + 2);
-        }}
-      />
+      <li>
+        <Pagination
+          disabled={posts.length >= total}
+          onClick={() => {
+            setTotalPosts(totalPosts + 2);
+          }}
+        />
+      </li>
     </ListPostsStyled>
   );
 };
