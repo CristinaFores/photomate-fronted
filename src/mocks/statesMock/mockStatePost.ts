@@ -7,6 +7,7 @@ const post: Post = {
   description: "",
   location: "",
   imagePaths: [],
+  buckpicture: [],
   date: "",
   tags: [],
   like: [],
