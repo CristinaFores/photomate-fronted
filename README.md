@@ -22,6 +22,14 @@
 
 ✅[Sonar Frontend](https://sonarcloud.io/project/overview?id=isdi-coders-2022_Cristina-Fores_Front-Final-Project-202209-BCN)
 
+# PREVIEW
+
+![home.png]
+![login.png]
+![filtro.png]
+![paginacion.png]
+![crear.png]
+
 # Data Layer
 
 ## 📝Post

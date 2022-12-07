@@ -7,6 +7,7 @@ import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import { useAppSelector } from "../../redux/hooks";
+import ExitRoute from "../ExitRouter/ExitRouter";
 import Header from "../Header/Header";
 import Logo from "../Logo/Logo";
 import Navbar from "../NavBar/Navbar";
@@ -35,10 +36,27 @@ const Layout = (): JSX.Element => {
 
       <LayoutStyled>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-
+          <Route
+            path="/"
+            element={
+              <ExitRoute children={<LoginPage />} isLogged={false}></ExitRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <ExitRoute children={<LoginPage />} isLogged={false}></ExitRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <ExitRoute
+                children={<RegisterPage />}
+                isLogged={false}
+              ></ExitRoute>
+            }
+          />
           <Route
             path="/home"
             element={
