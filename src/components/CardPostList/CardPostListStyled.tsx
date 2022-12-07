@@ -47,7 +47,7 @@ export const TitelPostyled = styled.div`
   margin-right: 1rem;
 `;
 export const ImgStyled = styled.img`
-  object-fit: contain;
+  object-fit: cover;
 `;
 
 export const ContainButtonStyled = styled.div`

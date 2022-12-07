@@ -55,7 +55,7 @@ const CardPostList = ({
       <ProfileIconStyled>
         <div>
           <FontAwesomeIcon className="icon-profile" icon={faCircleUser} />
-          <h3>{owner.username}</h3>
+          <h2>{owner.username}</h2>
         </div>
 
         <ContainIconEditStyled>
@@ -74,7 +74,13 @@ const CardPostList = ({
         </ContainIconEditStyled>
       </ProfileIconStyled>
       {imagePaths.map((img, index) => (
-        <ImgStyled src={img} alt="imagenes de la publicacion" key={index} />
+        <ImgStyled
+          src={img}
+          alt="imagenes de la publicacion"
+          key={index}
+          width={252}
+          height={252}
+        />
       ))}
       <TitelPostyled>
         <span>{new Date(date || "").toLocaleDateString()}</span>
