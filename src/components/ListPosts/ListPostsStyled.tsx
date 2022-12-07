@@ -6,11 +6,11 @@ export const ListPostsStyled = styled.ul`
   gap: 1rem;
 `;
 
-export const NoResultsStyled = styled.h3`
+export const NoResultsStyled = styled.p`
   color: ${(props) => props.theme.colors.primary.dark};
   font-weight: 2.5rem;
   margin-top: 2rem;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-align: center;
 `;

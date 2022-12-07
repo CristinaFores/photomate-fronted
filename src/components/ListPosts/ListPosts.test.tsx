@@ -25,7 +25,9 @@ describe("Given component ListPostsHome", () => {
       test("Then its should show text no results'", async () => {
         renderWithProviders(<ListPosts key={0} />);
 
-        const expectHeading = screen.getByRole("heading");
+        const expectHeading = screen.getByText(
+          "Lo siento, no se han encontrado resultados"
+        );
 
         expect(expectHeading).toBeInTheDocument();
       });

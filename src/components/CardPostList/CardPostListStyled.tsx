@@ -5,9 +5,14 @@ export const CardPostListStyled = styled.li`
   flex-direction: column;
   width: 252px;
   gap: 0.5rem;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
   .icon-profile {
     font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
   }
 `;
 
@@ -60,7 +65,7 @@ export const ContainIconEditStyled = styled.div`
   display: flex;
   gap: 1.5rem;
   .icon-edit {
-    font-size: 2rem;
+    font-size: 1.9rem;
     &:hover {
       color: ${(props) => props.theme.colors.primary.base};
     }
