@@ -78,7 +78,7 @@ const CardPostList = ({
           src={img}
           alt={`imagenes de la publicacion del usuario ${owner.username}, con titulo ${title}`}
           key={img}
-          width={252}
+          width={260}
           height={252}
         />
       ))}
