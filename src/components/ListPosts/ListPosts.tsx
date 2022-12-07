@@ -3,7 +3,7 @@ import usePost from "../../hooks/usePost/usePost";
 import { useAppSelector } from "../../redux/hooks";
 import CardPostList from "../CardPostList/CardPostList";
 import Pagination from "../Pagination/Pagination";
-import { ListPostsStyled } from "./ListPostsStyled";
+import { ListPostsStyled, NoResultsStyled } from "./ListPostsStyled";
 
 const ListPosts = (): JSX.Element => {
   const { loadPosts } = usePost();
@@ -13,6 +13,13 @@ const ListPosts = (): JSX.Element => {
   useEffect(() => {
     loadPosts({ limit: totalPosts });
   }, [totalPosts, loadPosts]);
+
+  if (posts.length === 0)
+    return (
+      <NoResultsStyled>
+        Losiento, no se han encuntrado resultados
+      </NoResultsStyled>
+    );
 
   return (
     <ListPostsStyled>
