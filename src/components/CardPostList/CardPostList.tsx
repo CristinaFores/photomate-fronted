@@ -76,8 +76,8 @@ const CardPostList = ({
       {imagePaths.map((img, index) => (
         <ImgStyled
           src={img}
-          alt="imagenes de la publicacion"
-          key={index}
+          alt={`imagenes de la publicacion del usuario ${owner.username}, con titulo ${title}`}
+          key={img}
           width={252}
           height={252}
         />

@@ -91,10 +91,12 @@ const usePost = () => {
           },
         });
         dispatch(deletePostActionCreator(id));
-        showModalActionCreator({
-          isError: false,
-          text: "La publicacion ha sido eliminada",
-        });
+        dispatch(
+          showModalActionCreator({
+            isError: false,
+            text: "La publicacion ha sido eliminada",
+          })
+        );
       } catch (error: unknown) {
         dispatch(
           showModalActionCreator({
