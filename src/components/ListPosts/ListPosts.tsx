@@ -17,7 +17,7 @@ const ListPosts = (): JSX.Element => {
   if (posts.length === 0)
     return (
       <NoResultsStyled>
-        Losiento, no se han encuntrado resultados
+        Losiento, no se han encontrado resultados
       </NoResultsStyled>
     );
 

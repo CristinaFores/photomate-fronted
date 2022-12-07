@@ -13,8 +13,8 @@ export const ModalStyled = styled.div`
   position: fixed;
   height: 100%;
   top: 50%;
-  width: 342px;
-  height: 372px;
+  width: 291px;
+  height: 327px;
   transform: translateY(-50%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
     inset 0px 4px 4px rgba(0, 0, 0, 0.25);

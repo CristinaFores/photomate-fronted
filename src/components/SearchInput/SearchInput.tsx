@@ -17,7 +17,7 @@ const SearchInput = (): JSX.Element => {
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debouncePost = useCallback(debounce(loadPosts, 2000), [loadPosts]);
+  const debouncePost = useCallback(debounce(loadPosts, 1000), [loadPosts]);
 
   return (
     <>
