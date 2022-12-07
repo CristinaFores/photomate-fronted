@@ -3,8 +3,11 @@ import { NavLink } from "react-router-dom";
 import { faHouse, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { faSquarePlus } from "@fortawesome/free-regular-svg-icons";
 import { NavbarStyled } from "./NavbarStyled";
+import Button from "../Button/Button";
+import useUser from "../../hooks/useUser/useUser";
 
 const Navbar = (): JSX.Element => {
+  const { userLogout } = useUser();
   return (
     <NavbarStyled className="menu">
       <li>
@@ -18,9 +21,17 @@ const Navbar = (): JSX.Element => {
         </NavLink>
       </li>
       <li>
-        <NavLink to={"/perfil"} aria-label="Perfil usuario">
+        <NavLink to={"/home"} aria-label="Perfil usuario">
           <FontAwesomeIcon className="icon-navbar" icon={faCircleUser} />
         </NavLink>
+      </li>
+      <li>
+        <Button
+          ariaLabel={"Cerrar Session"}
+          styleType={"smallest"}
+          text="Salir "
+          action={userLogout}
+        ></Button>
       </li>
     </NavbarStyled>
   );

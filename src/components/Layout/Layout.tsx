@@ -3,13 +3,11 @@ import CreatePostPage from "../../pages/CreatePostPage/CreatePostPage";
 import DetailPostPage from "../../pages/DetailPostPage/DetailPostPage";
 import EditPostPage from "../../pages/EditPagePost/EditPostPage";
 import ListPostPage from "../../pages/ListPostsPage/ListPostsPage";
-
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import { useAppSelector } from "../../redux/hooks";
 import Header from "../Header/Header";
-
 import Logo from "../Logo/Logo";
 import Navbar from "../NavBar/Navbar";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -40,6 +38,7 @@ const Layout = (): JSX.Element => {
           <Route path="/" element={<LoginPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+
           <Route
             path="/home"
             element={
@@ -49,9 +48,42 @@ const Layout = (): JSX.Element => {
               ></ProtectedRoute>
             }
           />
-          <Route path="/posts/:id" element={<DetailPostPage />} />
-          <Route path="/newpost" element={<CreatePostPage />} />
-          <Route path="/editpost/:id" element={<EditPostPage />} />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute
+                children={<Logo />}
+                isLogged={true}
+              ></ProtectedRoute>
+            }
+          />
+          <Route
+            path="/posts/:id"
+            element={
+              <ProtectedRoute
+                children={<DetailPostPage />}
+                isLogged={true}
+              ></ProtectedRoute>
+            }
+          />
+          <Route
+            path="/newpost"
+            element={
+              <ProtectedRoute
+                children={<CreatePostPage />}
+                isLogged={true}
+              ></ProtectedRoute>
+            }
+          />
+          <Route
+            path="/editpost/:id"
+            element={
+              <ProtectedRoute
+                children={<EditPostPage />}
+                isLogged={true}
+              ></ProtectedRoute>
+            }
+          />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </LayoutStyled>

@@ -6,4 +6,5 @@ export const LogoStyled = styled.h1`
   font-weight: 2.5rem;
   font-family: Dancing Script;
   font-weight: bold;
+  cursor: pointer;
 `;

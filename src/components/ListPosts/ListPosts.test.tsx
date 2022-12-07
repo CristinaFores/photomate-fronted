@@ -19,4 +19,16 @@ describe("Given component ListPostsHome", () => {
       expect(listPost).toBeInTheDocument();
     });
   });
+
+  describe("Given component ListPostsHome", () => {
+    describe("When it recives state store", () => {
+      test("Then its should show text no results'", async () => {
+        renderWithProviders(<ListPosts key={0} />);
+
+        const expectHeading = screen.getByRole("heading");
+
+        expect(expectHeading).toBeInTheDocument();
+      });
+    });
+  });
 });
