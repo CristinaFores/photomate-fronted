@@ -8,7 +8,7 @@ import { ListPostsStyled, NoResultsStyled } from "./ListPostsStyled";
 const ListPosts = (): JSX.Element => {
   const { loadPosts } = usePost();
   const { posts, total } = useAppSelector((state) => state.post);
-  const [totalPosts, setTotalPosts] = useState(2);
+  const [totalPosts, setTotalPosts] = useState(3);
 
   useEffect(() => {
     loadPosts({ limit: totalPosts });
@@ -37,7 +37,7 @@ const ListPosts = (): JSX.Element => {
         <Pagination
           disabled={posts.length >= total}
           onClick={() => {
-            setTotalPosts(totalPosts + 2);
+            setTotalPosts(totalPosts + 3);
           }}
         />
       </li>
