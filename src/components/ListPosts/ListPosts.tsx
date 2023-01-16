@@ -22,26 +22,26 @@ const ListPosts = (): JSX.Element => {
     );
 
   return (
-    <ListPostsStyled>
-      {posts.map((post, index) => (
-        <CardPostList
-          owner={post.owner}
-          title={post.title}
-          date={post.date}
-          imagePaths={post.buckpicture!}
-          key={post.id}
-          id={post.id}
-        />
-      ))}
-      <li>
-        <Pagination
-          disabled={posts.length >= total}
-          onClick={() => {
-            setTotalPosts(totalPosts + 3);
-          }}
-        />
-      </li>
-    </ListPostsStyled>
+    <>
+      <ListPostsStyled>
+        {posts.map((post, index) => (
+          <CardPostList
+            owner={post.owner}
+            title={post.title}
+            date={post.date}
+            imagePaths={post.buckpicture!}
+            key={post.id}
+            id={post.id}
+          />
+        ))}
+      </ListPostsStyled>
+      <Pagination
+        disabled={posts.length >= total}
+        onClick={() => {
+          setTotalPosts(totalPosts + 3);
+        }}
+      />
+    </>
   );
 };
 
