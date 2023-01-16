@@ -4,7 +4,7 @@ const Pagination = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ): JSX.Element => {
   return (
-    <ButtonStyled aria-label={"Cargar más"} styleType={"big"} {...props}>
+    <ButtonStyled aria-label="Cargar más" styleType="medium" {...props}>
       {"Cargar más"}
     </ButtonStyled>
   );

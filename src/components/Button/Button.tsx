@@ -6,7 +6,7 @@ interface ButtonProps {
   disabled?: boolean;
   ariaLabel: string;
   onSubmit?: React.FormEventHandler<HTMLButtonElement>;
-  styleType: "big" | "small" | "smallest";
+  styleType: "big" | "medium" | "small" | "smallest";
 }
 
 const Button = ({
